@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Funnel Not Converting? Here's the Diagnostic Framework We Use — Blue Digix</title>
+    <meta name="description" content="Your sales funnel isn't converting. Before you rebuild everything, use this 5-point diagnostic framework to find the actual bottleneck—and fix it fast.">
+    <link rel="canonical" href="https://bluedigix.com/guides/sales-funnel-not-converting/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Sales Funnel Not Converting? Here's the Diagnostic Framework We Use",
+        "description": "Your sales funnel isn't converting. Before you rebuild everything, use this 5-point diagnostic framework to find the actual bottleneck—and fix it fast.",
+        "author": {
+            "@type": "Organization",
+            "name": "Blue Digix",
+            "url": "https://bluedigix.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Blue Digix",
+            "url": "https://bluedigix.com"
+        },
+        "datePublished": "2025-01-15",
+        "dateModified": "2025-01-15",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://bluedigix.com/guides/sales-funnel-not-converting/"
+        }
+    }
+    </script>
+    
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What's the most common reason sales funnels don't convert?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The most common reason is a traffic-offer mismatch. You're sending the wrong people into a funnel built for different buyers. Many business owners blame the funnel when the real problem is upstream—the traffic source is delivering leads who were never a fit for the offer in the first place."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I know if I have a traffic problem or a funnel problem?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Look at your page-level metrics. If your landing page bounce rate is over 70% within 10 seconds, that's usually a traffic problem—wrong audience. If people stay but don't convert, that's a funnel problem—the messaging, offer, or user experience isn't compelling enough."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What conversion rate should I expect from my sales funnel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Benchmarks vary wildly by industry and traffic temperature. Cold traffic landing pages typically convert at 2-5%. Warm traffic (retargeting, email list) should hit 10-20%. If you're below these ranges, there's usually a specific bottleneck you can identify and fix."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Should I rebuild my funnel or try to optimize it?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Optimize first. Most underperforming funnels have one or two specific bottlenecks causing 80% of the problems. Only rebuild when: you've validated a completely different offer, your tech stack is fundamentally broken, or optimization efforts over 60-90 days haven't moved the needle."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long does it take to fix a broken sales funnel?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Diagnostic takes 1-2 days with proper tracking in place. Quick wins can be implemented in a week. Significant improvements typically show within 2-4 weeks of focused optimization. A full funnel overhaul takes 4-8 weeks depending on complexity."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the first thing I should check if my funnel isn't converting?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Check your analytics first. Specifically: where do people drop off? Most business owners can't answer this because they don't have proper tracking. Install heatmaps, set up conversion tracking for each funnel step, and watch actual session recordings. The data usually reveals the problem within hours."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why do funnels that worked before suddenly stop converting?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Three common reasons: audience fatigue (same people seeing the same message too many times), market shifts (competitors changed the playing field), or platform algorithm changes affecting your traffic quality. The fix depends on which factor is at play—and often it's a combination of all three."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        :root { --navy: #0A1628; --accent: #2563EB; --bg: #FAF8F5; --bg-card: #FFFFFF; --text: #1A1A1A; --text-secondary: #5C5C5C; --text-muted: #8A8A8A; --border: rgba(0,0,0,0.08); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
+        
+        /* Navigation */
+        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--navy) !important; color: white !important; padding: 10px 24px !important; border-radius: 6px; font-weight: 600 !important; }
+        
+        /* Article Layout */
+        .article-container { max-width: 760px; margin: 0 auto; padding: 60px clamp(24px,5vw,56px) 100px; }
+        
+        /* Breadcrumb */
+        .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 32px; }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--accent); }
+        
+        /* Article Header */
+        header { margin-bottom: 48px; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: clamp(32px,4vw,44px); font-weight: 700; color: var(--navy); letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 20px; }
+        .lead { font-size: 19px; color: var(--text-secondary); line-height: 1.7; }
+        
+        /* Article Body */
+        article h2 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy); margin: 48px 0 20px; letter-spacing: -0.02em; }
+        article h3 { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 600; color: var(--navy); margin: 36px 0 16px; }
+        article p { margin-bottom: 20px; color: var(--text); font-size: 17px; }
+        article ul, article ol { margin: 20px 0 24px 24px; }
+        article li { margin-bottom: 12px; font-size: 17px; color: var(--text); }
+        article strong { font-weight: 600; color: var(--navy); }
+        
+        /* Callout Box */
+        .callout { background: var(--bg-card); border-left: 4px solid var(--accent); padding: 24px 28px; margin: 32px 0; border-radius: 0 8px 8px 0; }
+        .callout p { margin: 0; font-size: 16px; }
+        .callout strong { color: var(--accent); }
+        
+        /* Numbered Steps */
+        .audit-point { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin: 24px 0; }
+        .audit-point h3 { margin-top: 0; display: flex; align-items: center; gap: 12px; }
+        .audit-number { background: var(--accent); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 14px; flex-shrink: 0; }
+        .audit-point p:last-child { margin-bottom: 0; }
+        
+        /* FAQ Section */
+        .faq-section { margin-top: 60px; padding-top: 48px; border-top: 1px solid var(--border); }
+        .faq-item { margin-bottom: 28px; }
+        .faq-question { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+        .faq-answer { color: var(--text-secondary); font-size: 16px; line-height: 1.7; }
+        
+        /* CTA Section */
+        .cta-section { background: var(--navy); border-radius: 16px; padding: 56px 48px; margin-top: 64px; text-align: center; }
+        .cta-section h2 { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 700; color: white; margin-bottom: 16px; }
+        .cta-section p { color: rgba(255,255,255,0.7); font-size: 17px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--accent); color: white; font-weight: 600; font-size: 16px; text-decoration: none; border-radius: 8px; transition: all 0.3s; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(37,99,235,0.4); }
+        
+        /* Footer */
+        footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; }
+        
+        @media (max-width: 640px) {
+            .nav-links { gap: 16px; }
+            .cta-section { padding: 40px 28px; }
+            .audit-point { padding: 20px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-logo">Blue<span>Digix</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/">Guides</a></li>
+                <li><a href="https://book.bluedigix.com/vsl2" class="nav-cta">Watch the Demo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="article-container">
+        <nav class="breadcrumb">
+            <a href="/">Home</a> → <a href="/guides/">Guides</a> → Sales Funnel Not Converting
+        </nav>
+        
+        <article>
+            <header>
+                <h1>Sales Funnel Not Converting? Here's the Diagnostic Framework We Use</h1>
+                <p class="lead">You built a funnel. Traffic is flowing. But the leads aren't coming—or worse, they're coming but nobody's buying. Before you scrap everything and start over, let's find the actual problem.</p>
+            </header>
+
+            <p>Every week, we talk to founders who've spent $10K, $30K, sometimes $100K+ on funnels that "don't work." They're ready to blow it all up and try something new.</p>
+
+            <p>Most of the time, that's the wrong move.</p>
+
+            <p>The funnel isn't broken. One specific part of the funnel is broken. And once you identify it, the fix is usually faster and cheaper than you'd expect.</p>
+
+            <p>This guide walks you through the exact diagnostic framework we use when a client comes to us with a "broken" funnel. It's the same process whether the funnel cost $500 or $500,000 to build.</p>
+
+            <h2>Why Most Funnels Fail (It's Rarely What You Think)</h2>
+
+            <p>Here's what most people assume when their funnel isn't converting:</p>
+
+            <ul>
+                <li>"The landing page design is wrong"</li>
+                <li>"I need better copy"</li>
+                <li>"The tech is buggy"</li>
+                <li>"I should try a different funnel type"</li>
+            </ul>
+
+            <p>Sometimes these are real issues. But in our experience auditing hundreds of underperforming funnels, the actual problem usually falls into one of five categories—and the most common culprit is the one nobody wants to hear.</p>
+
+            <div class="callout">
+                <p><strong>The uncomfortable truth:</strong> Most funnel problems are actually traffic problems. You're sending the wrong people into a funnel built for different buyers. The funnel is working exactly as designed—it's just designed for an audience you're not reaching.</p>
+            </div>
+
+            <p>Before you touch your funnel, you need to diagnose where the breakdown is actually happening. That's what the 5-point audit is for.</p>
+
+            <h2>The 5-Point Funnel Audit Checklist</h2>
+
+            <p>Work through these in order. Each point builds on the previous one, and skipping ahead usually means you'll miss the real issue.</p>
+
+            <div class="audit-point">
+                <h3><span class="audit-number">1</span> Traffic Quality vs Funnel Problem</h3>
+                <p>This is the diagnostic that changes everything. You need to determine: is the problem <em>who's</em> coming to your funnel, or <em>what happens</em> when they get there?</p>
+                <p><strong>Signs you have a traffic problem:</strong></p>
+                <ul>
+                    <li>Bounce rate over 70% within the first 10 seconds</li>
+                    <li>Time on page under 30 seconds average</li>
+                    <li>Traffic source is broad targeting (interest-based ads, generic SEO)</li>
+                    <li>High click-through rate on ads but terrible on-page metrics</li>
+                </ul>
+                <p><strong>Signs you have a funnel problem:</strong></p>
+                <ul>
+                    <li>People stay on the page but don't take action</li>
+                    <li>Good engagement metrics but low conversion</li>
+                    <li>Traffic from referrals or warm sources still doesn't convert</li>
+                    <li>You get "this looks interesting" feedback but no sales</li>
+                </ul>
+                <p>If you don't have analytics that show you these numbers, that's actually the first problem to solve. You can't optimize what you can't measure.</p>
+            </div>
+
+            <div class="audit-point">
+                <h3><span class="audit-number">2</span> Offer-Market Fit</h3>
+                <p>Your funnel can be technically perfect and still fail if the offer doesn't match what the market actually wants to buy.</p>
+                <p>This isn't about whether your product is good. It's about whether the <em>specific offer</em>—the price, the packaging, the promise, the positioning—resonates with the people seeing it.</p>
+                <p><strong>Test questions:</strong></p>
+                <ul>
+                    <li>When you describe your offer to ideal prospects in person, do they immediately "get it"?</li>
+                    <li>Are competitors selling similar offers successfully? (If not, you might be creating demand rather than capturing it)</li>
+                    <li>Does your price point match the traffic temperature? (Cold traffic rarely buys $10K offers directly)</li>
+                    <li>Is your offer solving a "vitamin" problem or a "painkiller" problem?</li>
+                </ul>
+                <p>If there's any hesitation on these questions, the funnel isn't your problem. The offer is.</p>
+            </div>
+
+            <div class="audit-point">
+                <h3><span class="audit-number">3</span> Copy and Messaging Gaps</h3>
+                <p>Assuming your traffic is right and your offer is solid, the next bottleneck is usually how you're communicating the offer.</p>
+                <p><strong>Common messaging problems:</strong></p>
+                <ul>
+                    <li><strong>Talking about features instead of outcomes.</strong> Nobody cares about your "proprietary methodology." They care about what changes in their life.</li>
+                    <li><strong>Leading with credentials instead of relevance.</strong> Your prospect is asking "is this for me?" not "is this person qualified?"</li>
+                    <li><strong>Burying the offer.</strong> If someone has to scroll or click more than twice to understand what you're selling and how to buy it, you're losing people.</li>
+                    <li><strong>Trying to convince instead of qualify.</strong> Good funnel copy filters out bad fits as much as it attracts good ones.</li>
+                </ul>
+                <p>The test: can someone who's never heard of you read your landing page for 30 seconds and accurately describe what you're offering and who it's for?</p>
+            </div>
+
+            <div class="audit-point">
+                <h3><span class="audit-number">4</span> Technical Friction Points</h3>
+                <p>This is usually what people check first, but it's actually the least common cause of funnel failure. Still, when tech problems exist, they're fatal.</p>
+                <p><strong>Friction points to audit:</strong></p>
+                <ul>
+                    <li><strong>Page speed.</strong> Every second over 3 seconds costs you roughly 7% of conversions. Test on mobile.</li>
+                    <li><strong>Form length.</strong> Every field you add reduces completion rate. Ask only what you need for the next step.</li>
+                    <li><strong>Mobile experience.</strong> Over 60% of traffic is mobile. If your funnel isn't mobile-first, you're losing the majority of your visitors.</li>
+                    <li><strong>Broken elements.</strong> Test every button, form, video, and link. On every device. Regularly.</li>
+                    <li><strong>Payment friction.</strong> Multiple payment options, clear pricing, and a simple checkout flow matter more than most people realize.</li>
+                </ul>
+                <p>Use session recording tools and watch real people go through your funnel. You'll find issues you never knew existed.</p>
+            </div>
+
+            <div class="audit-point">
+                <h3><span class="audit-number">5</span> Follow-Up and Nurture Gaps</h3>
+                <p>Here's the dirty secret of high-performing funnels: most of the conversion doesn't happen on the first visit. It happens in the follow-up.</p>
+                <p>If your entire strategy is "send traffic to page → hope they buy," you're leaving 80% of your potential revenue on the table.</p>
+                <p><strong>Critical follow-up elements:</strong></p>
+                <ul>
+                    <li><strong>Speed to lead.</strong> If someone opts in or inquires, how fast do they hear from you? Under 5 minutes should be the standard.</li>
+                    <li><strong>Email sequence depth.</strong> Most people need 5-12 touches before they buy. Is your sequence that long?</li>
+                    <li><strong>Multi-channel follow-up.</strong> Email alone isn't enough. SMS, retargeting, and direct outreach dramatically increase conversion.</li>
+                    <li><strong>Value before ask.</strong> Is your follow-up sequence providing value, or just repeating "buy now"?</li>
+                </ul>
+                <p>The funnel doesn't end when someone leaves your landing page. For most businesses, that's where the real conversion process begins.</p>
+            </div>
+
+            <h2>How to Identify YOUR Bottleneck</h2>
+
+            <p>Now that you understand the five potential failure points, here's how to find which one is actually killing your funnel:</p>
+
+            <p><strong>Step 1: Pull your numbers.</strong> You need conversion rates at every stage: ad click → page view → scroll depth → opt-in/inquiry → purchase. If you don't have these numbers, you're guessing.</p>
+
+            <p><strong>Step 2: Compare to benchmarks.</strong> Industry benchmarks give you a rough idea of where you should be. Significantly below benchmark? That's probably your bottleneck.</p>
+
+            <ul>
+                <li>Cold traffic landing page opt-in: 15-25%</li>
+                <li>Sales page conversion (warm traffic): 2-5%</li>
+                <li>Webinar attendance rate: 25-40%</li>
+                <li>Email open rate: 20-35%</li>
+                <li>Email click rate: 2-5%</li>
+            </ul>
+
+            <p><strong>Step 3: Identify the biggest gap.</strong> If your opt-in rate is 30% but your sales page converts at 0.5%, your landing page isn't the problem—your sales page is. Focus there.</p>
+
+            <p><strong>Step 4: Diagnose <em>why</em> that stage is failing.</strong> Use the 5-point checklist above to determine if it's a traffic, offer, messaging, tech, or follow-up problem at that specific stage.</p>
+
+            <h2>Quick Wins You Can Implement Today</h2>
+
+            <p>While you're working through the full diagnostic, here are changes that almost always improve conversion—and take less than a day to implement:</p>
+
+            <p><strong>1. Add urgency or scarcity.</strong> Real urgency, not fake countdown timers. Limited spots, limited time bonuses, or rising prices.</p>
+
+            <p><strong>2. Simplify your above-the-fold.</strong> One headline. One subheadline. One call-to-action. Remove everything else.</p>
+
+            <p><strong>3. Add social proof near the CTA.</strong> Testimonials, logos, or results—positioned right where people make the decision.</p>
+
+            <p><strong>4. Cut your form fields in half.</strong> You can always ask for more information later. Right now, reduce friction.</p>
+
+            <p><strong>5. Speed up your follow-up.</strong> If leads aren't getting contacted within 5 minutes, fix that before anything else. This single change can double conversion rates.</p>
+
+            <p><strong>6. Add a video.</strong> If you don't have one, add a simple talking-head video explaining the offer. Personal connection beats polished design.</p>
+
+            <h2>When to Rebuild vs. Optimize</h2>
+
+            <p>Sometimes the right move really is to tear it down and start fresh. But it's rarer than you'd think.</p>
+
+            <p><strong>Optimize when:</strong></p>
+            <ul>
+                <li>You can identify a specific bottleneck causing most of the problems</li>
+                <li>The offer has been validated (people buy it through other channels)</li>
+                <li>Your funnel was built recently with modern best practices</li>
+                <li>You have data showing where people drop off</li>
+            </ul>
+
+            <p><strong>Rebuild when:</strong></p>
+            <ul>
+                <li>You've validated a fundamentally different offer that requires new positioning</li>
+                <li>Your tech stack is outdated or cobbled together and causing ongoing issues</li>
+                <li>You've been optimizing for 60-90 days with no improvement</li>
+                <li>The brand or market has shifted significantly since the funnel was built</li>
+            </ul>
+
+            <p>The key insight: even when you rebuild, you're not starting from scratch. The diagnostic you've done tells you exactly what the new funnel needs to do differently.</p>
+
+            <div class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="faq-item">
+                    <p class="faq-question">What's the most common reason sales funnels don't convert?</p>
+                    <p class="faq-answer">The most common reason is a traffic-offer mismatch. You're sending the wrong people into a funnel built for different buyers. Many business owners blame the funnel when the real problem is upstream—the traffic source is delivering leads who were never a fit for the offer in the first place.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">How do I know if I have a traffic problem or a funnel problem?</p>
+                    <p class="faq-answer">Look at your page-level metrics. If your landing page bounce rate is over 70% within 10 seconds, that's usually a traffic problem—wrong audience. If people stay but don't convert, that's a funnel problem—the messaging, offer, or user experience isn't compelling enough.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">What conversion rate should I expect from my sales funnel?</p>
+                    <p class="faq-answer">Benchmarks vary wildly by industry and traffic temperature. Cold traffic landing pages typically convert at 2-5%. Warm traffic (retargeting, email list) should hit 10-20%. If you're below these ranges, there's usually a specific bottleneck you can identify and fix.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Should I rebuild my funnel or try to optimize it?</p>
+                    <p class="faq-answer">Optimize first. Most underperforming funnels have one or two specific bottlenecks causing 80% of the problems. Only rebuild when: you've validated a completely different offer, your tech stack is fundamentally broken, or optimization efforts over 60-90 days haven't moved the needle.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">How long does it take to fix a broken sales funnel?</p>
+                    <p class="faq-answer">Diagnostic takes 1-2 days with proper tracking in place. Quick wins can be implemented in a week. Significant improvements typically show within 2-4 weeks of focused optimization. A full funnel overhaul takes 4-8 weeks depending on complexity.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">What's the first thing I should check if my funnel isn't converting?</p>
+                    <p class="faq-answer">Check your analytics first. Specifically: where do people drop off? Most business owners can't answer this because they don't have proper tracking. Install heatmaps, set up conversion tracking for each funnel step, and watch actual session recordings. The data usually reveals the problem within hours.</p>
+                </div>
+
+                <div class="faq-item">
+                    <p class="faq-question">Why do funnels that worked before suddenly stop converting?</p>
+                    <p class="faq-answer">Three common reasons: audience fatigue (same people seeing the same message too many times), market shifts (competitors changed the playing field), or platform algorithm changes affecting your traffic quality. The fix depends on which factor is at play—and often it's a combination of all three.</p>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Watch How This Works in 7 Minutes</h2>
+                <p>See the exact system we use to diagnose funnel problems, identify the bottleneck, and fix it—without rebuilding from scratch.</p>
+                <a href="https://book.bluedigix.com/vsl2" class="cta-btn">Watch the Demo →</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">© 2025 Blue Digix, LLC. All rights reserved.</div>
+    </footer>
+</body>
+</html>

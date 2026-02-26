@@ -14,7 +14,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
         .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
-        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
         .nav-logo span { color: var(--accent); }
@@ -26,15 +26,25 @@
         h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px,4vw,52px); font-weight: 700; color: var(--navy); letter-spacing: -0.03em; margin-bottom: 12px; }
         .sub { font-size: 18px; color: var(--text-secondary); max-width: 560px; }
         .section-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; margin-top: 60px; }
-        .coming-soon { padding: 60px 0 120px; }
-        .empty-state { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 60px 40px; text-align: center; }
-        .empty-state p { color: var(--text-muted); font-size: 16px; }
-        .cta-box { margin-top: 80px; padding: 48px; background: var(--navy); border-radius: 14px; text-align: center; }
+        .guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; padding-bottom: 40px; }
+        .guide-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 32px; text-decoration: none; color: inherit; transition: all 0.3s; }
+        .guide-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+        .guide-card .category { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+        .guide-card h3 { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+        .guide-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.5; }
+        .guide-card .read-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: 14px; font-weight: 600; color: var(--accent); }
+        .guide-card .read-more svg { width: 16px; height: 16px; transition: transform 0.3s; }
+        .guide-card:hover .read-more svg { transform: translateX(4px); }
+        .cta-box { margin-top: 60px; margin-bottom: 80px; padding: 48px; background: var(--navy); border-radius: 14px; text-align: center; }
         .cta-box h2 { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 700; color: white; margin-bottom: 12px; }
         .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 28px; }
         .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: var(--accent); color: white; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.3s; }
         .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.3); }
         footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; }
+        @media (max-width: 768px) {
+            .nav-links { gap: 16px; }
+            .guides-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -51,18 +61,70 @@
     <div class="container">
         <header>
             <h1>Growth Guides</h1>
-            <p class="sub">Tactical playbooks for founder-led companies. Client acquisition, revenue systems, and AI-powered growth — no fluff.</p>
+            <p class="sub">Tactical playbooks for founder-led companies. Client acquisition, revenue systems, and sales funnels — no fluff.</p>
         </header>
-        <div class="coming-soon">
-            <div class="section-title">Guides Coming Soon</div>
-            <div class="empty-state">
-                <p>We're building out our guide library. First batch drops soon — covering client acquisition, sales funnels, and AI tools for growth-stage companies.</p>
-            </div>
-            <div class="cta-box">
-                <h2>Can't wait?</h2>
-                <p>Book a free 30-minute growth audit. We'll identify your specific constraint and map the system that fixes it.</p>
-                <a href="/contact" class="cta-btn">Book a Free Growth Audit →</a>
-            </div>
+
+        <!-- Sales Funnels -->
+        <div class="section-title">🔧 Sales Funnels</div>
+        <div class="guides-grid">
+            <a href="/guides/hire-someone-to-build-sales-funnel/" class="guide-card">
+                <div class="category">Hiring</div>
+                <h3>Looking to Hire Someone to Build Your Sales Funnel?</h3>
+                <p>What to look for, red flags to avoid, and when done-for-you makes more sense than DIY.</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/guides/sales-funnel-not-converting/" class="guide-card">
+                <div class="category">Optimization</div>
+                <h3>Sales Funnel Not Converting? The Diagnostic Framework</h3>
+                <p>The 5-point audit we use to find exactly where your funnel is leaking money.</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/guides/done-for-you-sales-funnel-consultants/" class="guide-card">
+                <div class="category">Consultants</div>
+                <h3>Done-For-You Sales Funnels for Consultants</h3>
+                <p>Why consultants need different funnels than product businesses — and what to expect from a DFY service.</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+        </div>
+
+        <!-- Client Acquisition -->
+        <div class="section-title">🎯 Client Acquisition</div>
+        <div class="guides-grid">
+            <a href="/guides/not-closing-sales-calls/" class="guide-card">
+                <div class="category">Sales</div>
+                <h3>Why You're Not Closing Sales Calls</h3>
+                <p>It's probably not your pitch. Here's how your pipeline and funnel affect close rates.</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/guides/wasting-money-on-ads/" class="guide-card">
+                <div class="category">Paid Ads</div>
+                <h3>Wasting Money on Ads and Not Getting Clients?</h3>
+                <p>The uncomfortable truth: ads aren't your problem—your backend is. Here's what's actually broken.</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+        </div>
+
+        <!-- Platform Comparisons -->
+        <div class="section-title">⚖️ Platform Comparisons</div>
+        <div class="guides-grid">
+            <a href="/guides/clickfunnels-vs-gohighlevel-service-business/" class="guide-card">
+                <div class="category">Comparison</div>
+                <h3>ClickFunnels vs GoHighLevel for Service Businesses</h3>
+                <p>The honest breakdown for service businesses. Which platform actually fits your needs?</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+            <a href="/guides/gohighlevel-for-coaches/" class="guide-card">
+                <div class="category">Coaches</div>
+                <h3>GoHighLevel for Coaches: Complete Setup Guide</h3>
+                <p>Everything coaches need to know about GHL — or let us set it up for you.</p>
+                <span class="read-more">Read guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+        </div>
+
+        <div class="cta-box">
+            <h2>Ready to fix your revenue system?</h2>
+            <p>Book a free 30-minute growth audit. We'll identify your specific constraint and map the system that fixes it.</p>
+            <a href="/contact" class="cta-btn">Book a Free Growth Audit →</a>
         </div>
     </div>
     <footer>
