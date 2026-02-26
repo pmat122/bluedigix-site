@@ -1,0 +1,15 @@
+# Affiliate Redirects
+/go/ghl          https://www.gohighlevel.com/?fp_ref=paul90          302
+/go/instantly     https://instantly.ai/?via=pmat122                   302
+/go/apollo        https://get.apollo.io/xav02k934y4a                 302
+/go/magai         https://magai.co/?via=pmat122                      302
+/go/jasper        https://www.jasper.ai/?fpr=paul78                  302
+/go/ranked        https://account.ranked.ai/r/WN370W                 302
+/go/7min          https://clientcaptivation.com/7min-video            302
+
+# Clean URLs
+/contact          /contact.html          200
+/7min             /go/7min               302
+
+# 404 fallback
+/*                /404.html              404
