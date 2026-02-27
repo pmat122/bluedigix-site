@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Write a VSL Script for Coaches (Without Sounding Salesy) — Blue Digix</title>
+    <meta name="description" content="A simple framework for creating VSL scripts that convert coaching prospects into booked calls—without the hype, manipulation, or hour-long webinars.">
+    <link rel="canonical" href="https://bluedigix.com/guides/how-to-write-a-vsl-script-for-coaches/">
+    
+    <meta property="og:title" content="How to Write a VSL Script for Coaches (Without Sounding Salesy)">
+    <meta property="og:description" content="A simple framework for creating VSL scripts that convert coaching prospects into booked calls.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bluedigix.com/guides/how-to-write-a-vsl-script-for-coaches/">
+    <meta property="og:site_name" content="Blue Digix">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "How to Write a VSL Script for Coaches (Without Sounding Salesy)",
+        "description": "A simple framework for creating VSL scripts that convert coaching prospects into booked calls—without the hype, manipulation, or hour-long webinars.",
+        "author": {"@type": "Person", "name": "Paul Matarelli", "url": "https://bluedigix.com/"},
+        "publisher": {"@type": "Organization", "name": "Blue Digix", "url": "https://bluedigix.com"},
+        "datePublished": "2025-01-20",
+        "dateModified": "2025-01-20",
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://bluedigix.com/guides/how-to-write-a-vsl-script-for-coaches/"}
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --navy: #0A1628; --accent: #2563EB; --accent-hover: #1D4ED8; --bg: #FAF8F5; --bg-warm: #F3F0EB; --bg-card: #FFFFFF; --text: #1A1A1A; --text-secondary: #5C5C5C; --text-muted: #8A8A8A; --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.14); }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
+        .article-container { max-width: 760px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
+        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--navy) !important; color: white !important; padding: 10px 24px !important; border-radius: 6px; font-weight: 600 !important; }
+        .article-header { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+        .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4.5vw, 48px); font-weight: 700; color: var(--navy); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+        .article-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--text-muted); }
+        .article-content { padding: 56px 0; }
+        .article-content h2 { font-family: 'Outfit', sans-serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin: 48px 0 20px; padding-top: 16px; }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content h3 { font-family: 'Outfit', sans-serif; font-size: clamp(18px, 2vw, 22px); font-weight: 600; color: var(--navy); margin: 32px 0 12px; }
+        .article-content p { font-size: 17px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.8; }
+        .article-content ul, .article-content ol { margin: 20px 0 28px 24px; color: var(--text-secondary); }
+        .article-content li { font-size: 17px; margin-bottom: 12px; line-height: 1.7; }
+        .article-content li strong { color: var(--text); }
+        .article-content a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(37,99,235,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.3s; }
+        .article-content a:hover { text-decoration-color: var(--accent); }
+        .callout { background: var(--bg-warm); border-left: 4px solid var(--accent); padding: 24px 28px; border-radius: 0 10px 10px 0; margin: 32px 0; }
+        .callout p { margin-bottom: 0; font-size: 16px; }
+        .callout strong { color: var(--navy); }
+        .cta-box { background: var(--bg-card); border: 2px solid var(--border); border-radius: 14px; padding: 36px; margin: 40px 0; text-align: center; }
+        .cta-box h3 { font-family: 'Outfit', sans-serif; font-size: 22px; color: var(--navy); margin: 0 0 12px; }
+        .cta-box p { font-size: 16px; margin-bottom: 24px; }
+        .cta-box-primary { background: var(--navy); border-color: var(--navy); }
+        .cta-box-primary h3, .cta-box-primary p { color: white; }
+        .cta-box-primary p { opacity: 0.8; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.3s; }
+        .btn-primary { background: var(--accent); color: white !important; text-decoration: none !important; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.3); }
+        .btn-white { background: white; color: var(--navy) !important; text-decoration: none !important; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--border-strong); text-decoration: none !important; }
+        .btn-outline:hover { border-color: var(--navy); }
+        footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; background: var(--bg-card); }
+        @media (max-width: 768px) { .nav-links { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-logo">Blue<span>Digix</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/">Guides</a></li>
+                <li><a href="/contact" class="nav-cta">Book a Growth Audit</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <article>
+        <header class="article-header">
+            <div class="article-container">
+                <nav class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/guides/">Guides</a> / VSL Script for Coaches
+                </nav>
+                <h1>How to Write a VSL Script for Coaches (Without Sounding Salesy)</h1>
+                <div class="article-meta">
+                    <span>Updated January 2025</span>
+                    <span>·</span>
+                    <span>10 min read</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="article-content">
+            <div class="article-container">
+                
+                <p>You know you need a video sales letter. Every successful coach seems to have one. But every time you sit down to write it, you end up sounding like a late-night infomercial or staring at a blank page for hours.</p>
+                
+                <p>The problem isn't your writing ability. It's that most VSL frameworks were designed for mass-market products, not high-ticket coaching. They rely on hype, artificial urgency, and manipulation tactics that feel wrong—because they are wrong for your audience.</p>
+                
+                <p>Here's a better approach: a script framework specifically designed for coaches who want to convert without compromising their integrity.</p>
+                
+                <h2>Why Traditional VSL Scripts Don't Work for Coaches</h2>
+                
+                <p>Classic VSL formulas were built to sell $47 courses to cold traffic at scale. They're optimized for volume, not quality. That's why they're full of:</p>
+                
+                <ul>
+                    <li>Exaggerated promises and income claims</li>
+                    <li>Artificial scarcity ("Only 7 spots left!")</li>
+                    <li>Hour-long runtimes that exhaust viewers</li>
+                    <li>Heavy emotional manipulation</li>
+                </ul>
+                
+                <p>When you try to use these techniques to sell $5K-$25K coaching packages, they backfire. Your ideal clients are sophisticated. They recognize manipulation. They're looking for expertise and fit, not hype.</p>
+                
+                <div class="callout">
+                    <p><strong>The core difference:</strong> Low-ticket VSLs try to close the sale in the video. High-ticket VSLs should close the <em>next step</em>—booking a call with a pre-sold, qualified prospect.</p>
+                </div>
+                
+                <h2>The 7-Minute Coaching VSL Framework</h2>
+                
+                <p>After testing dozens of variations with coaching clients, we've found that shorter, more focused videos outperform long-form VSLs almost every time. Here's the structure that works:</p>
+                
+                <h3>Section 1: The Hook (60 seconds)</h3>
+                
+                <p>Your opening needs to accomplish one thing: make the right person feel like you're talking directly to them.</p>
+                
+                <p>Start with their situation, not yours. Something like:</p>
+                
+                <p><em>"If you're a successful professional who's built a coaching business to $10K months, but you're stuck trading time for money and can't seem to break through to the next level..."</em></p>
+                
+                <p>The hook should create an immediate moment of recognition. They should think "yes, that's exactly where I am."</p>
+                
+                <h3>Section 2: The Problem (90 seconds)</h3>
+                
+                <p>Now articulate their problem better than they can themselves. Go deeper than surface symptoms:</p>
+                
+                <ul>
+                    <li><strong>Surface problem:</strong> "I need more clients"</li>
+                    <li><strong>Real problem:</strong> "I'm dependent on referrals and have no predictable way to generate qualified leads"</li>
+                    <li><strong>Deeper problem:</strong> "My business can't grow beyond my personal capacity to network"</li>
+                </ul>
+                
+                <p>When you name the problem they haven't been able to articulate, you demonstrate expertise. That builds trust faster than any testimonial.</p>
+                
+                <h3>Section 3: The Approach (2-3 minutes)</h3>
+                
+                <p>This is where most coaches go wrong. They either:</p>
+                
+                <ol>
+                    <li>Give away too much tactical information (trying to prove value)</li>
+                    <li>Stay so vague that nothing differentiates them</li>
+                </ol>
+                
+                <p>The sweet spot: explain your methodology at the strategic level. Share the "what" and "why," not the "how."</p>
+                
+                <p>For example: "We build what we call a Client Conversion Engine—a system that pre-sells prospects before they ever get on a call with you. It has three components: a positioning video, an automated qualification sequence, and a follow-up system that handles the 80% who aren't ready to buy today."</p>
+                
+                <p>You're showing them the architecture without giving them the blueprints. They understand the approach; they need you to implement it.</p>
+                
+                <h3>Section 4: Social Proof (60 seconds)</h3>
+                
+                <p>Keep this tight. One or two specific examples with concrete results:</p>
+                
+                <p><em>"Sarah was doing 15 discovery calls a week and closing maybe 2. After implementing this system, she's doing 8 calls a week and closing 5—with better-fit clients who stay longer."</em></p>
+                
+                <p>Specificity beats superlatives. "Doubled her close rate" is more believable than "transformed her business."</p>
+                
+                <h3>Section 5: The Bridge (90 seconds)</h3>
+                
+                <p>This is your transition to the call-to-action. Set clear expectations:</p>
+                
+                <ul>
+                    <li>What happens on the call</li>
+                    <li>Who it's for (and who it's not for)</li>
+                    <li>What they should come prepared to discuss</li>
+                </ul>
+                
+                <p>This section pre-qualifies while also reducing anxiety about booking. They know exactly what they're signing up for.</p>
+                
+                <h2>Script Template You Can Adapt</h2>
+                
+                <p>Here's a fill-in-the-blank structure to get you started:</p>
+                
+                <p><strong>Hook:</strong> "If you're a [specific type of person] who [specific situation], this video is for you."</p>
+                
+                <p><strong>Problem:</strong> "The real issue isn't [surface problem]. It's that [deeper problem]. And until you solve that, [consequence they're experiencing]."</p>
+                
+                <p><strong>Approach:</strong> "What we've found works is [methodology name]. It works in three stages: [stage 1], [stage 2], and [stage 3]. The result is [outcome]."</p>
+                
+                <p><strong>Proof:</strong> "For example, [client name/type] was dealing with [their situation]. After [timeframe], they [specific result]."</p>
+                
+                <p><strong>Bridge:</strong> "If this resonates, the next step is a [call type]. On that call, we'll [what happens]. It's specifically for [who it's for]. Book a time below if [qualification criteria]."</p>
+                
+                <div class="callout">
+                    <p><strong>Pro tip:</strong> Record your first version as a rough draft. Speak naturally, then transcribe and edit. Spoken language reads differently than written copy—and your VSL should sound like you talking, not reading.</p>
+                </div>
+                
+                <h2>Common Mistakes to Avoid</h2>
+                
+                <h3>Mistake 1: Going Too Long</h3>
+                
+                <p>Every minute past 10 dramatically decreases completion rates. Your job isn't to close them in the video—it's to get them to the call. Say enough to accomplish that, then stop.</p>
+                
+                <h3>Mistake 2: Too Much "About Me"</h3>
+                
+                <p>Your credentials matter less than you think. Prospects care about whether you understand their problem and can solve it. Lead with their situation, not your biography.</p>
+                
+                <h3>Mistake 3: Weak or Missing Pre-Qualification</h3>
+                
+                <p>If your VSL doesn't filter out bad fits, you'll end up on calls with people who can't afford you, aren't ready to commit, or want something you don't offer. Build qualification into the video itself.</p>
+                
+                <h3>Mistake 4: Over-Polished Production</h3>
+                
+                <p>A slick, heavily produced video can actually hurt conversions for coaches. It creates distance. Your prospects want to work with a human, not a brand. Authenticity beats production value.</p>
+                
+                <h2>The System Behind the Script</h2>
+                
+                <p>A great script is necessary but not sufficient. You also need:</p>
+                
+                <ul>
+                    <li><strong>A landing page</strong> that frames the video properly</li>
+                    <li><strong>A follow-up sequence</strong> for people who watch but don't book</li>
+                    <li><strong>A tracking system</strong> so you know who watched and for how long</li>
+                    <li><strong>A booking page</strong> that continues the pre-sell messaging</li>
+                </ul>
+                
+                <p>Platforms like <a href="/go/ghl">GoHighLevel</a> make this easy to build as one integrated system. The script is the engine; the system is the car.</p>
+                
+                <h2>Getting Started</h2>
+                
+                <p>Don't try to write the perfect script on your first attempt. Here's the process:</p>
+                
+                <ol>
+                    <li><strong>Draft the structure</strong> using the framework above (30 minutes)</li>
+                    <li><strong>Record a rough version</strong> speaking naturally (15 minutes)</li>
+                    <li><strong>Transcribe and edit</strong> for clarity and flow (45 minutes)</li>
+                    <li><strong>Record the final version</strong> (30 minutes)</li>
+                    <li><strong>Test with real traffic</strong> and iterate based on data</li>
+                </ol>
+                
+                <p>Your first version won't be perfect. That's fine. A good-enough video that's live beats a perfect video that's still in your head.</p>
+                
+                <div class="cta-box cta-box-primary">
+                    <h3>See This Framework in Action</h3>
+                    <p>Watch the 7-minute video that demonstrates exactly how this structure works for client conversion.</p>
+                    <a href="/go/7min" class="btn btn-white">Watch the 7-Min Framework →</a>
+                </div>
+                
+                <div class="cta-box">
+                    <h3>Need Help Building Your System?</h3>
+                    <p>We build complete client acquisition systems for coaches—script, video, landing page, and follow-up automation included.</p>
+                    <a href="/contact" class="btn btn-primary">Book a Free Growth Audit →</a>
+                </div>
+                
+            </div>
+        </div>
+    </article>
+    
+    <footer>
+        <div class="container">© 2025 Blue Digix, LLC. All rights reserved.</div>
+    </footer>
+</body>
+</html>
