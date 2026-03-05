@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G94LPHFXJ4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G94LPHFXJ4');
+    </script>
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '591636233557540');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=591636233557540&ev=PageView&noscript=1"
+    /></noscript>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — Blue Digix Revenue Architecture</title>
+    <meta name="description" content="Blue Digix services: Growth Audits, Revenue Architecture, Lead Systems, and Fractional Growth partnerships. We build systems that scale revenue predictably.">
+    <link rel="canonical" href="https://bluedigix.com/services">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FAF8F5;
+            --bg-card: #FFFFFF;
+            --navy: #0A1628;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --text: #1A1A1A;
+            --text-secondary: #5C5C5C;
+            --text-muted: #8A8A8A;
+            --border: rgba(0,0,0,0.08);
+            --headline: 'Outfit', sans-serif;
+            --body: 'DM Sans', -apple-system, sans-serif;
+            --max-w: 900px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--body); background: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 16px 0;
+            background: rgba(250,248,245,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        nav .container { max-width: 1180px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo {
+            font-family: var(--headline);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--navy);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-back {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        .services-page {
+            padding: 120px 0 80px;
+        }
+        .services-page h1 {
+            font-family: var(--headline);
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+            line-height: 1.2;
+            text-align: center;
+        }
+        .services-page .lead {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            text-align: center;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: box-shadow 0.2s;
+        }
+        .service-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+        }
+        .service-card h2 {
+            font-family: var(--headline);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .service-card .tag {
+            display: inline-block;
+            background: rgba(37,99,235,0.1);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .service-card ul {
+            color: var(--text-secondary);
+            margin: 0 0 0 20px;
+        }
+        .service-card li { margin-bottom: 8px; }
+
+        .process-section {
+            margin-top: 64px;
+            padding-top: 48px;
+            border-top: 1px solid var(--border);
+        }
+        .process-section h2 {
+            font-family: var(--headline);
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        .step {
+            text-align: center;
+            padding: 24px;
+        }
+        .step-num {
+            width: 48px;
+            height: 48px;
+            background: var(--navy);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--headline);
+            font-weight: 700;
+            font-size: 20px;
+            margin: 0 auto 16px;
+        }
+        .step h3 {
+            font-family: var(--headline);
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .step p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .cta-box {
+            background: var(--navy);
+            border-radius: 16px;
+            padding: 48px;
+            margin-top: 64px;
+            text-align: center;
+        }
+        .cta-box h3 {
+            font-family: var(--headline);
+            color: white;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .cta-box p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+            font-size: 18px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: var(--accent-hover); }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; }
+        footer a:hover { color: var(--text); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-logo">Blue<span>Digix</span></a>
+            <a href="/" class="nav-back">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="services-page">
+        <div class="container">
+            <h1>Services</h1>
+            <p class="lead">We don't sell tactics. We engineer revenue systems that compound over time.</p>
+
+            <div class="service-card">
+                <span class="tag">Starting Point</span>
+                <h2>Growth Audit</h2>
+                <p>A 30-minute diagnostic session where we identify the specific constraint limiting your revenue growth. You'll leave with clarity on what's broken and a roadmap to fix it—whether you work with us or not.</p>
+                <ul>
+                    <li>Full-funnel diagnostic</li>
+                    <li>Constraint identification</li>
+                    <li>Prioritized action plan</li>
+                    <li>No pitch, no obligation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <span class="tag">Core Offering</span>
+                <h2>Revenue Architecture</h2>
+                <p>We design and implement the complete system between paid demand and predictable revenue. This includes lead qualification, nurture sequences, sales enablement, and analytics infrastructure.</p>
+                <ul>
+                    <li>End-to-end funnel design</li>
+                    <li>CRM setup and automation</li>
+                    <li>Lead scoring and routing</li>
+                    <li>Conversion optimization</li>
+                    <li>Revenue attribution</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <span class="tag">Ongoing Partnership</span>
+                <h2>Fractional Growth</h2>
+                <p>Embedded growth leadership without the full-time hire. We act as your outsourced growth team—managing campaigns, optimizing systems, and scaling what works.</p>
+                <ul>
+                    <li>Strategic planning</li>
+                    <li>Campaign management</li>
+                    <li>Weekly optimization cycles</li>
+                    <li>Team training and enablement</li>
+                    <li>Performance reporting</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <span class="tag">Specialized</span>
+                <h2>Lead System Builds</h2>
+                <p>Standalone projects to build specific components of your growth infrastructure. Perfect if you have internal capacity but need expert architecture.</p>
+                <ul>
+                    <li>Outbound automation systems</li>
+                    <li>Inbound lead capture and qualification</li>
+                    <li>Appointment booking funnels</li>
+                    <li>Email nurture sequences</li>
+                    <li>Analytics dashboards</li>
+                </ul>
+            </div>
+
+            <div class="process-section">
+                <h2>How We Work</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <h3>Diagnose</h3>
+                        <p>Growth Audit to identify your specific constraint</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <h3>Design</h3>
+                        <p>Architecture plan tailored to your business</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <h3>Build</h3>
+                        <p>Implementation of systems that scale</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <h3>Optimize</h3>
+                        <p>Continuous improvement and iteration</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h3>Ready to Build Your Revenue System?</h3>
+                <p>Start with a free Growth Audit. 30 minutes, no pitch.</p>
+                <a href="/contact" class="cta-btn">Book Your Growth Audit</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Blue Digix, LLC. All rights reserved.</p>
+            <p style="margin-top: 12px;">
+                <a href="/about">About</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/guides/">Guides</a>
+                <a href="/contact">Contact</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

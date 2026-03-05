@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G94LPHFXJ4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G94LPHFXJ4');
+    </script>
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '591636233557540');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=591636233557540&ev=PageView&noscript=1"
+    /></noscript>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Blue Digix — Revenue Architecture for Growth-Stage Companies</title>
+    <meta name="description" content="Blue Digix is a fractional growth partner founded by Paul Mester. We engineer the system between paid demand and predictable revenue for founder-led companies.">
+    <link rel="canonical" href="https://bluedigix.com/about">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #FAF8F5;
+            --bg-card: #FFFFFF;
+            --navy: #0A1628;
+            --accent: #2563EB;
+            --accent-hover: #1D4ED8;
+            --text: #1A1A1A;
+            --text-secondary: #5C5C5C;
+            --text-muted: #8A8A8A;
+            --border: rgba(0,0,0,0.08);
+            --headline: 'Outfit', sans-serif;
+            --body: 'DM Sans', -apple-system, sans-serif;
+            --max-w: 800px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--body); background: var(--bg); color: var(--text); line-height: 1.7; }
+
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 16px 0;
+            background: rgba(250,248,245,0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+        nav .container { max-width: 1180px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo {
+            font-family: var(--headline);
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--navy);
+            text-decoration: none;
+        }
+        .nav-logo span { color: var(--accent); }
+        .nav-back {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .nav-back:hover { color: var(--text); }
+
+        .about-page {
+            padding: 120px 0 80px;
+        }
+        .about-page h1 {
+            font-family: var(--headline);
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+        .about-page h2 {
+            font-family: var(--headline);
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 40px 0 16px;
+        }
+        .about-page p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 17px;
+        }
+        .about-page .lead {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 32px;
+        }
+        .founder-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .founder-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .founder-info h3 {
+            font-family: var(--headline);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .founder-info .title {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .founder-info p {
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+        .cta-box {
+            background: var(--navy);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .cta-box h3 {
+            font-family: var(--headline);
+            color: white;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .cta-box p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+        .cta-btn:hover { background: var(--accent-hover); }
+        
+        @media (max-width: 600px) {
+            .founder-section { flex-direction: column; text-align: center; }
+            .founder-photo { margin: 0 auto; }
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        footer a { color: var(--text-secondary); text-decoration: none; margin: 0 12px; }
+        footer a:hover { color: var(--text); }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-logo">Blue<span>Digix</span></a>
+            <a href="/" class="nav-back">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="about-page">
+        <div class="container">
+            <h1>About Blue Digix</h1>
+            <p class="lead">We engineer the system between paid demand and predictable revenue. Blue Digix is a fractional growth partner for founder-led companies ready to scale.</p>
+
+            <p>Most growth agencies sell tactics. We build systems. The difference? Tactics decay. Systems compound.</p>
+            
+            <p>We work with B2B and high-ticket service companies who've found product-market fit but hit a ceiling. The leads are coming in, but close rates are inconsistent. The ads are running, but CAC keeps climbing. The team is hustling, but revenue stays flat.</p>
+            
+            <p>The problem isn't effort—it's architecture. Blue Digix diagnoses the specific constraint limiting growth and engineers the system that eliminates it.</p>
+
+            <h2>Our Approach</h2>
+            <p>We don't do retainers for retainer's sake. Every engagement starts with a Growth Audit—a diagnostic session where we identify exactly where growth is breaking down. From there, we build the specific systems you need:</p>
+            <ul style="color: var(--text-secondary); margin: 0 0 16px 24px;">
+                <li style="margin-bottom: 8px;">Revenue architecture that connects marketing to sales</li>
+                <li style="margin-bottom: 8px;">Lead qualification systems that filter signal from noise</li>
+                <li style="margin-bottom: 8px;">Automation workflows that scale without headcount</li>
+                <li style="margin-bottom: 8px;">Analytics infrastructure that surfaces what matters</li>
+            </ul>
+
+            <div class="founder-section">
+                <img src="/paul.png" alt="Paul Mester, Founder of Blue Digix" class="founder-photo">
+                <div class="founder-info">
+                    <h3>Paul Mester</h3>
+                    <p class="title">Founder & Growth Architect</p>
+                    <p>Paul has spent 10+ years building growth systems for companies ranging from bootstrapped startups to 8-figure enterprises. Before Blue Digix, he led acquisition at multiple venture-backed companies and consulted for agencies struggling to scale their own operations. He started Blue Digix because he saw too many founders paying for tactics when they needed systems.</p>
+                </div>
+            </div>
+
+            <h2>Who We Work With</h2>
+            <p>Blue Digix is the right fit if you're:</p>
+            <ul style="color: var(--text-secondary); margin: 0 0 16px 24px;">
+                <li style="margin-bottom: 8px;">A founder-led B2B or high-ticket service company</li>
+                <li style="margin-bottom: 8px;">Generating $500K–$5M in annual revenue</li>
+                <li style="margin-bottom: 8px;">Ready to invest in systems, not just campaigns</li>
+                <li style="margin-bottom: 8px;">Looking for a strategic partner, not an order-taker</li>
+            </ul>
+
+            <div class="cta-box">
+                <h3>Ready to Diagnose the Constraint?</h3>
+                <p>Book a free 30-minute Growth Audit. No pitch—just clarity.</p>
+                <a href="/contact" class="cta-btn">Book Your Growth Audit</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Blue Digix, LLC. All rights reserved.</p>
+            <p style="margin-top: 12px;">
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/guides/">Guides</a>
+                <a href="/contact">Contact</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
