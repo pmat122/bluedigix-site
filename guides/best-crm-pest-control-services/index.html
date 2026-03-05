@@ -122,8 +122,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
         .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
-        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; isolation: isolate; }
-        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .site-nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 1000; isolation: isolate; overflow: visible; }
+        .site-nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
         .nav-logo span { color: var(--accent); }
         .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
@@ -186,8 +186,14 @@
         
         footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; }
         
-        @media (max-width: 768px) {
-            nav .container { flex-wrap: wrap; gap: 8px; justify-content: center; }
+        @media (max-width: 900px) {
+            .nav-links { gap: 20px; }
+            .nav-links a { font-size: 13px; }
+            .nav-cta { padding: 8px 16px !important; font-size: 13px !important; }
+        }
+        
+        @media (max-width: 640px) {
+            .site-nav .container { flex-wrap: wrap; gap: 8px; justify-content: center; }
             .nav-logo { width: 100%; text-align: center; margin-bottom: 8px; }
             .nav-links { gap: 16px; justify-content: center; }
             .nav-links li { font-size: 14px; }
@@ -195,8 +201,8 @@
         }
         
         @media (max-width: 480px) {
-            nav { padding: 12px 0; }
-            nav .container { padding: 0 12px; gap: 6px; }
+            .site-nav { padding: 12px 0; }
+            .site-nav .container { padding: 0 12px; gap: 6px; }
             .nav-logo { font-size: 18px; margin-bottom: 6px; }
             .nav-links { gap: 10px; }
             .nav-links a { font-size: 13px; }
@@ -212,7 +218,7 @@
     </style>
 </head>
 <body>
-    <nav>
+    <nav class="site-nav">
         <div class="container">
             <a href="/" class="nav-logo">Blue<span>Digix</span></a>
             <ul class="nav-links">
