@@ -990,11 +990,216 @@
         </div>
     </section>
 
+    <!-- LEAD CAPTURE -->
+    <section class="lead-capture" id="audit">
+        <div class="container">
+            <div class="capture-box reveal">
+                <div class="capture-content">
+                    <div class="section-label">Free Growth Audit</div>
+                    <h2>Get a personalized growth roadmap</h2>
+                    <p>Enter your email and we'll send you a custom analysis of where growth is breaking down in your business — plus actionable next steps to fix it.</p>
+                    <ul class="capture-benefits">
+                        <li>✓ Identify your #1 revenue constraint</li>
+                        <li>✓ Get a custom system recommendation</li>
+                        <li>✓ No pitch unless you want one</li>
+                    </ul>
+                </div>
+                <div class="capture-form">
+                    <form id="leadForm" onsubmit="return submitLead(event)">
+                        <div class="form-group">
+                            <label for="leadName">Name</label>
+                            <input type="text" id="leadName" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leadEmail">Email</label>
+                            <input type="email" id="leadEmail" name="email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="leadRevenue">Monthly Revenue</label>
+                            <select id="leadRevenue" name="revenue">
+                                <option value="">Select range</option>
+                                <option value="0-10k">$0 - $10K</option>
+                                <option value="10k-50k">$10K - $50K</option>
+                                <option value="50k-100k">$50K - $100K</option>
+                                <option value="100k+">$100K+</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">
+                            Get My Free Audit
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <p class="form-note">No spam. Unsubscribe anytime.</p>
+                    </form>
+                    <div id="formSuccess" style="display:none;" class="form-success">
+                        <div class="success-icon">✓</div>
+                        <h3>You're in!</h3>
+                        <p>Check your inbox for your personalized growth audit. We'll be in touch within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .lead-capture {
+            padding: 100px 0;
+            background: var(--navy);
+        }
+        .capture-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .capture-content {
+            color: white;
+        }
+        .capture-content .section-label {
+            color: var(--accent);
+        }
+        .capture-content h2 {
+            font-family: var(--headline);
+            font-size: clamp(28px, 3vw, 36px);
+            font-weight: 700;
+            margin: 16px 0;
+            line-height: 1.2;
+            color: white;
+        }
+        .capture-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        .capture-benefits {
+            list-style: none;
+            margin-top: 24px;
+        }
+        .capture-benefits li {
+            color: rgba(255,255,255,0.9);
+            font-size: 15px;
+            padding: 8px 0;
+        }
+        .capture-form {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 16px;
+            border: 1px solid var(--border-strong);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--body);
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+        .form-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+        .form-success {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: #16A34A;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 20px;
+        }
+        .form-success h3 {
+            font-family: var(--headline);
+            font-size: 24px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .form-success p {
+            color: var(--text-secondary);
+        }
+        @media (max-width: 768px) {
+            .capture-box {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+
+    <script>
+        const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/73JctoYNF5rEgo4S5PU0/webhook-trigger/d8dc5980-71a0-45bf-9efc-55cc41b1a976';
+        
+        async function submitLead(e) {
+            e.preventDefault();
+            const form = document.getElementById('leadForm');
+            const btn = form.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = 'Submitting...';
+            btn.disabled = true;
+            
+            const data = {
+                name: document.getElementById('leadName').value,
+                email: document.getElementById('leadEmail').value,
+                revenue: document.getElementById('leadRevenue').value,
+                tool_source: 'bluedigix-homepage'
+            };
+            
+            try {
+                await fetch(GHL_WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+            } catch (err) {
+                console.log('Webhook error (non-blocking)', err);
+            }
+            
+            form.style.display = 'none';
+            document.getElementById('formSuccess').style.display = 'block';
+            
+            // Track conversion
+            if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+            if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'form', event_label: 'homepage' });
+            
+            return false;
+        }
+    </script>
+
     <!-- FINAL CTA -->
     <section class="final-cta">
         <div class="container">
-            <div class="section-label reveal">Next Step</div>
-            <h2 class="reveal">If growth feels harder than it should</h2>
+            <div class="section-label reveal">Prefer to talk?</div>
+            <h2 class="reveal">Book a call instead</h2>
             <p class="section-sub reveal">A 30-minute growth audit to find your specific constraint and map the system that fixes it. No pitch unless it makes sense for both of us.</p>
             <div class="cta-actions reveal">
                 <a href="/contact" class="btn-accent">
