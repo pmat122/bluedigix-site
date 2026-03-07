@@ -2,65 +2,237 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bluedigix.com/</loc>
-    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://bluedigix.com/contact</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://bluedigix.com/guides/</loc>
-    <lastmod>2026-02-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- Sales Funnel Guides -->
   <url>
-    <loc>https://bluedigix.com/guides/hire-someone-to-build-sales-funnel/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <loc>https://bluedigix.com/contact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bluedigix.com/guides/sales-funnel-not-converting/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <loc>https://bluedigix.com/guides/7-minute-sales-video-framework/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/ai-sales-scripts-that-convert/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/ai-tools-electrical-contractors/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/ai-tools-landscaping-businesses/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/attract-clients-without-cold-dms/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/best-crm-hvac-contractors/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/best-crm-pest-control-services/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/best-email-marketing-software-roofing-contractors/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/best-scheduling-software-plumbers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/cant-afford-copywriter-for-sales-page/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/chatgpt-sales-copy-not-converting/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/clickfunnels-vs-gohighlevel-service-business/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/client-acquisition-system-for-coaches/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/diy-vsl-for-service-business/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bluedigix.com/guides/done-for-you-sales-funnel-consultants/</loc>
-    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- Client Acquisition Guides -->
-  <url>
-    <loc>https://bluedigix.com/guides/not-closing-sales-calls/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://bluedigix.com/guides/wasting-money-on-ads/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- Platform Comparison Guides -->
-  <url>
-    <loc>https://bluedigix.com/guides/clickfunnels-vs-gohighlevel-service-business/</loc>
-    <lastmod>2026-02-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bluedigix.com/guides/gohighlevel-for-coaches/</loc>
-    <lastmod>2026-02-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/hire-someone-to-build-sales-funnel/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-automate-lead-nurturing/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-build-a-client-getting-funnel/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-fix-broken-sales-funnel/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-get-agency-clients-without-cold-outreach/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-get-consulting-clients-without-cold-outreach/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-get-qualified-calls-not-tire-kickers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-pre-qualify-leads-before-sales-call/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-pre-sell-before-sales-call/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-reduce-no-shows-on-sales-calls/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-warm-up-leads-before-call/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-write-a-vsl-script-for-coaches/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-write-a-vsl-script-for-consultants/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/how-to-write-persuasive-copy-without-experience/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/inbound-leads-for-service-business/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/landing-page-traffic-but-no-bookings/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/manychat-for-contractors/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/not-closing-sales-calls/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/pre-sell-video-for-high-ticket-offers/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/sales-funnel-not-converting-fix/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/sales-funnel-not-converting/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/sales-page-not-converting-what-to-do/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/sales-video-script-without-copywriter/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/wasting-money-on-ads/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/why-discovery-calls-dont-close/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/why-prospects-ghost-after-booking/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/why-prospects-show-up-cold-to-discovery-calls/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bluedigix.com/guides/why-your-book-a-call-page-isnt-converting/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
