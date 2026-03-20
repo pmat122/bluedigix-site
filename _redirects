@@ -8,6 +8,9 @@
 /go/7min          https://clientcaptivation.com/7min-video            302
 /go/arcads        https://arcads.ai/?via=pmat122                     302
 
+# Additional affiliate redirects
+/go/manychat    https://manychat.partnerlinks.io/lf6e5b4shbnx    302
+
 # Clean URLs
 /contact          /contact.html          200
 /7min             /go/7min               302
