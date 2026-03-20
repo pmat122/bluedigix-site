@@ -12,5 +12,9 @@
 /contact          /contact.html          200
 /7min             /go/7min               302
 
+# Canonical consolidation — redirect alternate slugs to canonical versions
+/guides/best-crm-hvac-companies/           /guides/best-crm-hvac-contractors/      301
+/guides/best-crm-for-pest-control-companies /guides/best-crm-pest-control-services/ 301
+
 # 404 fallback
 /*                /404.html              404
