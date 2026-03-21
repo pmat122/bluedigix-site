@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G94LPHFXJ4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G94LPHFXJ4');
+    </script>
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '591636233557540');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=591636233557540&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vyrsi70hhe");
+    </script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a Polymarket Trading Bot — Or Let Blue Digix Do It in 5 Days</title>
+    <meta name="description" content="Want to build a Polymarket trading bot? Discover exactly what it takes — authentication, gas management, CLOB API, risk logic — then decide if you want to build it yourself or have Blue Digix deploy it for you in 5–7 days.">
+    <link rel="canonical" href="https://bluedigix.com/guides/build-polymarket-trading-bot/">
+
+    <meta property="og:title" content="Build a Polymarket Trading Bot — The Complete Reality Check">
+    <meta property="og:description" content="Here's what it actually takes to build a Polymarket trading bot from scratch: 200+ hours, CLOB API authentication, gas management on Polygon, and risk controls that won't blow your account. Or: Blue Digix builds it for you in 5–7 days.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bluedigix.com/guides/build-polymarket-trading-bot/">
+    <meta property="og:site_name" content="Blue Digix">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Build Polymarket Trading Bot — Done-For-You Service",
+        "description": "Blue Digix builds and deploys professional Polymarket trading bots including VPS provisioning, CLOB API integration, whale wallet tracking, gas management, risk controls, Telegram alerts, and 30-day support. One-time setup $3,000–$5,000. Optional $500/month monitoring.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Blue Digix",
+            "url": "https://bluedigix.com"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Trading Bot Development",
+        "offers": {
+            "@type": "Offer",
+            "priceRange": "$3000–$5000",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #0A1628; --accent: #2563EB; --bg: #FAF8F5; --bg-card: #FFFFFF; --text: #1A1A1A; --text-secondary: #5C5C5C; --text-muted: #8A8A8A; --border: rgba(0,0,0,0.08); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        .nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .nav-cta { background: var(--navy) !important; color: white !important; padding: 10px 24px !important; border-radius: 6px; font-weight: 600 !important; }
+        article { padding: 80px 0; }
+        .category { display: inline-block; background: rgba(37,99,235,0.1); color: var(--accent); padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: clamp(32px,4vw,44px); font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
+        .lead { font-size: 20px; color: var(--text-secondary); margin-bottom: 40px; }
+        h2 { font-family: 'Outfit', sans-serif; font-size: 24px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; }
+        h3 { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 32px 0 12px; }
+        p { margin-bottom: 20px; font-size: 17px; }
+        ul, ol { margin-bottom: 20px; padding-left: 24px; }
+        li { margin-bottom: 8px; font-size: 17px; }
+        .dual-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 48px 0; }
+        .cta-box { padding: 32px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); }
+        .cta-box-primary { background: var(--navy); border: none; }
+        .cta-box-primary h3, .cta-box-primary p { color: #FFFFFF; }
+        .cta-box-primary p { opacity: 1; }
+        .cta-box h3 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+        .cta-box p { font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; }
+        .btn { display: inline-block; padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 14px; }
+        .btn-primary { background: var(--accent); color: white; }
+        .btn-white { background: white; color: var(--navy); }
+        .guide-cta-box { background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(37,99,235,0.02) 100%); border: 1px solid rgba(37,99,235,0.2); border-radius: 12px; padding: 28px 32px; margin: 32px 0; text-align: center; }
+        .guide-cta-box h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--navy); }
+        .guide-cta-box p { color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem; }
+        .guide-cta-box a.cta-btn { display: inline-block; background: #2563EB; color: #fff; padding: 14px 28px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1rem; }
+        .related-guides { margin-top: 48px; padding: 32px 0; }
+        .related-guides h3 { font-family: 'Outfit', sans-serif; font-size: 20px; margin-bottom: 16px; }
+        .related-guides ul { list-style: none; padding: 0; }
+        .related-guides li { margin-bottom: 12px; }
+        .related-guides a { color: var(--accent); text-decoration: none; font-weight: 500; }
+        .highlight-box { background: var(--bg-card); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+        .highlight-box p { margin-bottom: 0; font-size: 16px; color: var(--text-secondary); }
+        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; text-align: center; }
+        .stat-card .stat-number { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 700; color: var(--accent); display: block; }
+        .stat-card .stat-label { font-size: 13px; color: var(--text-secondary); margin-top: 4px; display: block; }
+        .code-block { background: #0A1628; color: #e2e8f0; border-radius: 8px; padding: 20px 24px; margin: 24px 0; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6; overflow-x: auto; }
+        .code-block .comment { color: #64748b; }
+        .code-block .keyword { color: #7dd3fc; }
+        .code-block .string { color: #86efac; }
+        .effort-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+        .effort-table th { background: var(--navy); color: white; padding: 12px 16px; text-align: left; font-family: 'Outfit', sans-serif; font-weight: 600; }
+        .effort-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+        .effort-table tr:last-child td { border-bottom: none; }
+        .effort-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+        footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; }
+        @media (max-width: 640px) { .dual-cta { grid-template-columns: 1fr; } .stats-row { grid-template-columns: 1fr; } .effort-table { font-size: 13px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Blue<span>Digix</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/">Guides</a></li>
+                <li><a href="/contact" class="nav-cta">Book a Growth Audit</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <article>
+        <div class="container">
+            <span class="category">Polymarket Bot Development</span>
+            <h1>He Spent 11 Days Trying to Build a Polymarket Trading Bot. Here's Exactly Where It Broke.</h1>
+            <p class="lead">If you're searching for how to build a Polymarket trading bot, you already have some technical ability and the right instinct. This page is going to be honest with you about what "build it yourself" actually requires — and then offer you a faster alternative if the reality changes your calculus.</p>
+
+            <h2>Chen Wei Had Python. He Had the Docs. He Had GitHub. He Still Spent 11 Days Getting Nowhere.</h2>
+
+            <p>Chen Wei is a prediction market trader based in Singapore. He'd been active on Polymarket for about 14 months, focused primarily on macroeconomic events — central bank decisions, inflation data releases, election outcomes in major economies. He had a genuine edge: years of experience reading economic indicators and a feel for when market consensus was mispriced.</p>
+
+            <p>He was also spending four to six hours a day doing things a machine could do.</p>
+
+            <p>Monitoring markets. Calculating position sizes. Executing transactions manually. Refreshing the interface at odd hours because the best entries on Asian-hours macro events happened while he was asleep. He'd done the math. He was a profitable trader by any reasonable measure — but if you factored in his time, he was earning a fraction of what his edge was actually worth.</p>
+
+            <p>So he decided to build a Polymarket trading bot.</p>
+
+            <p>He wasn't a professional developer, but he had solid Python knowledge. He'd written scripts before. He understood APIs conceptually. He figured this was a weekend project — maybe two weekends, max. He found a few GitHub repositories with Polymarket-related code, bookmarked the official API documentation, and opened his laptop.</p>
+
+            <p>Eleven days later, he had a half-working authentication flow, a partially functional order submission script, and a growing list of problems he didn't know how to solve.</p>
+
+            <p>He hadn't written a single line of actual trading logic yet.</p>
+
+            <p>Here's what he ran into — and why it took that long just to get to nothing.</p>
+
+            <h2>The Real Technical Stack Required to Build a Polymarket Bot</h2>
+
+            <p>Every "build your own Polymarket bot" tutorial glosses over the hard parts. They show you an API call. They show you a library import. They do not show you what happens when the authentication breaks silently, when gas estimation fails at the wrong moment, or when your position sizing logic interacts with the order book in ways you didn't anticipate.</p>
+
+            <p>Here is what actually building a reliable Polymarket trading bot requires — not a simplified summary, but the real technical inventory.</p>
+
+            <h3>Layer 1: Polymarket API Authentication</h3>
+
+            <p>Polymarket uses a CLOB (Central Limit Order Book) API for order execution. Authenticating with this API is not a simple API key swap. It requires:</p>
+
+            <ul>
+                <li>Generating an API key through a signed transaction using your wallet's private key</li>
+                <li>Deriving the correct API key credentials using the L1 authentication scheme Polymarket uses</li>
+                <li>Handling the signing library (py-clob-client) correctly, which has its own dependency tree and version-specific behavior</li>
+                <li>Managing key rotation and token refresh — your session credentials expire and need to be handled in long-running processes</li>
+            </ul>
+
+            <p>Chen Wei spent the first four days on this alone. Not because he was slow — because the documentation assumes familiarity with Web3 authentication patterns that most Python developers don't have. The error messages when something is misconfigured are not helpful. They tell you authentication failed; they don't tell you why, or what specific parameter in your signed payload was malformed.</p>
+
+            <div class="code-block">
+<span class="comment"># What the tutorial shows you:</span>
+<span class="keyword">from</span> py_clob_client.client <span class="keyword">import</span> ClobClient
+client = ClobClient(host, key=api_key, chain_id=137)
+
+<span class="comment"># What you actually need to understand first:</span>
+<span class="comment"># - How to derive the API key from your L1 private key via EIP-712 signing</span>
+<span class="comment"># - How to handle the POLY_API_KEY, POLY_API_SECRET, POLY_API_PASSPHRASE tuple</span>
+<span class="comment"># - How credentials differ between L1 auth and L2 auth contexts</span>
+<span class="comment"># - What nonce management looks like in a long-running process</span>
+<span class="comment"># - Why "Invalid credentials" could mean 6 different things</span>
+            </div>
+
+            <h3>Layer 2: Polygon Network and Gas Management</h3>
+
+            <p>Polymarket operates on the Polygon PoS network. Every trade you execute is an on-chain transaction. That means gas fees. It also means gas management — and this is where most DIY bot builders hit their first genuinely painful problem.</p>
+
+            <p>Gas on Polygon is usually cheap, but "usually cheap" is not the same as "reliably manageable in an automated context." You need to:</p>
+
+            <ul>
+                <li>Maintain a MATIC balance in your wallet specifically for gas — separate from your USDC trading capital</li>
+                <li>Implement gas estimation that doesn't underestimate during network congestion spikes</li>
+                <li>Handle "transaction underpriced" errors gracefully with retry logic and gas bumping</li>
+                <li>Manage nonce sequencing correctly — if you submit two transactions simultaneously (which any bot actively scanning markets will do), nonce collisions cause one or both to fail</li>
+                <li>Handle receipt confirmation without blocking your bot's main execution thread</li>
+            </ul>
+
+            <p>Chen Wei's first breakthrough on authentication was immediately followed by his bot submitting a trade and hanging indefinitely waiting for a transaction receipt that never arrived — because the gas price was too low during a brief congestion window and the transaction was silently dropped from the mempool.</p>
+
+            <p>He didn't find this for 90 minutes. He thought it was working.</p>
+
+            <h3>Layer 3: CLOB Order Types, Market Structure, and Price Discovery</h3>
+
+            <p>Polymarket's order book is a limit order book. Understanding how to interact with it programmatically is not the same as understanding how to place trades in the interface. Specifically:</p>
+
+            <ul>
+                <li>Orders are placed as conditional token buys/sells — the "price" is expressed as a probability between 0 and 1 (e.g., 0.73 means 73 cents per share, implying a 73% probability outcome)</li>
+                <li>The minimum order size, tick size, and fee structure must be handled in your order creation logic or orders will be rejected without clear error messaging</li>
+                <li>Market orders can result in significant slippage on low-liquidity markets — implementing a slippage tolerance check requires querying the order book depth before execution, not just placing the order</li>
+                <li>Partially filled orders require state tracking — your bot needs to know whether an order was fully executed, partially executed, or rejected, and handle each case differently</li>
+            </ul>
+
+            <p>This layer is where most GitHub repositories you find fall short. They show you how to place an order. They don't show you how to handle the order book in a way that won't cost you money when conditions aren't ideal.</p>
+
+            <h3>Layer 4: Wallet Tracking Infrastructure</h3>
+
+            <p>If your strategy involves following informed wallets — one of the most effective edges available on prediction markets — you need a wallet tracking system. This is not a Polymarket API feature. You're building it yourself from on-chain data.</p>
+
+            <p>Practically, this means:</p>
+
+            <ul>
+                <li>Querying Polygon node RPC endpoints (or a service like Alchemy or QuickNode) for transaction data from target wallet addresses</li>
+                <li>Parsing Polymarket-specific transaction signatures to identify when a tracked wallet has entered a position — and in which market, at what price, and in what direction</li>
+                <li>Filtering out hedging activity, dust trades, and portfolio rebalancing from genuine directional signals</li>
+                <li>Handling rate limits on your RPC provider without missing events</li>
+                <li>Timing your entry after a signal fires — enter too slowly and the price has moved; enter too quickly and you're front-running yourself on your own order</li>
+            </ul>
+
+            <p>Building this from scratch is a significant engineering project on its own. It took Chen Wei until day seven just to reliably parse which transactions from a wallet were Polymarket trades versus other Polygon activity. He hadn't written the signal-to-order logic yet.</p>
+
+            <h3>Layer 5: Risk Controls That Won't Blow Your Account</h3>
+
+            <p>An unguarded bot is genuinely dangerous. This is not a theoretical concern — it's something that happens when people deploy automated systems without proper risk architecture.</p>
+
+            <p>Without explicit risk controls, a Polymarket trading bot can:</p>
+
+            <ul>
+                <li>Deploy your entire bankroll into a single high-conviction market that moves against you</li>
+                <li>Follow a whale wallet into a series of losing positions without any circuit breaker to stop</li>
+                <li>Continue executing trades after a configuration error has corrupted its decision logic</li>
+                <li>Over-trade during high-volatility periods because there's no daily exposure limit</li>
+                <li>Silently fail mid-execution in a way that leaves partial positions open without your knowledge</li>
+            </ul>
+
+            <p>Implementing robust risk controls — position sizing as a percentage of bankroll, per-market exposure limits, daily loss circuit breakers, concurrent position caps, slippage maxima — requires careful design before any live money touches the system. It's not something you add later as an afterthought.</p>
+
+            <h3>Layer 6: Server Infrastructure and 24/7 Uptime</h3>
+
+            <p>A trading bot running on your laptop is not a trading bot. It's a script you have to remember to run. A real trading bot runs on a server, continuously, without your involvement. That means:</p>
+
+            <ul>
+                <li>Provisioning a Virtual Private Server with sufficient compute and memory</li>
+                <li>Configuring the server environment — dependencies, environment variables, secure key storage</li>
+                <li>Setting up process management (systemd, supervisor, or PM2) so the bot restarts automatically if it crashes</li>
+                <li>Implementing health checks so you know the bot is alive and executing — not just the process is running</li>
+                <li>Log management so you have a record of what happened and can debug problems after the fact</li>
+            </ul>
+
+            <h3>Layer 7: Monitoring, Alerts, and Observability</h3>
+
+            <p>Once your bot is running on a server, you're essentially flying blind unless you've built a monitoring layer. You need to know:</p>
+
+            <ul>
+                <li>Every trade the bot executes — market, direction, size, price, outcome</li>
+                <li>If the bot stops running or encounters an unhandled error</li>
+                <li>Daily P&amp;L summary so you can track performance without logging into a server</li>
+                <li>Gas balance alerts before your MATIC runs out and the bot starts failing transactions silently</li>
+                <li>Any circuit breaker events — if a risk limit was hit, you want to know immediately</li>
+            </ul>
+
+            <p>Without this layer, you have no visibility into a system making financial decisions on your behalf. Building it well requires integrating with a notification service (Telegram is the most common) and designing the alert logic so it's informative without being noisy.</p>
+
+            <div class="highlight-box">
+                <p>The total honest estimate to build a Polymarket trading bot that is production-ready, properly risk-managed, and reliably monitored: <strong>200 to 300 hours of development time</strong>, assuming solid Python skills and some Web3 familiarity. For most traders, it's a 4–8 week project — and that's before you start trading with it.</p>
+            </div>
+
+            <h2>The Real Cost of Building It Yourself</h2>
+
+            <p>Here's the full picture of what Chen Wei's 11-day effort actually cost him, and what the realistic total would have been:</p>
+
+            <table class="effort-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Estimated Build Time</th>
+                        <th>Where Most People Get Stuck</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>API authentication (L1/L2 key derivation)</td>
+                        <td>20–40 hours</td>
+                        <td>Silent auth failures, nonce handling, credential rotation</td>
+                    </tr>
+                    <tr>
+                        <td>Gas management and transaction handling</td>
+                        <td>15–25 hours</td>
+                        <td>Dropped transactions, nonce collisions, congestion handling</td>
+                    </tr>
+                    <tr>
+                        <td>CLOB order logic (order types, fills, slippage)</td>
+                        <td>20–35 hours</td>
+                        <td>Partial fills, order book depth queries, rejection handling</td>
+                    </tr>
+                    <tr>
+                        <td>Wallet tracking / signal detection</td>
+                        <td>30–50 hours</td>
+                        <td>RPC parsing, signal filtering, timing the entry</td>
+                    </tr>
+                    <tr>
+                        <td>Risk controls (position sizing, circuit breakers)</td>
+                        <td>20–30 hours</td>
+                        <td>State management across positions, limit enforcement</td>
+                    </tr>
+                    <tr>
+                        <td>Server setup and process management</td>
+                        <td>10–20 hours</td>
+                        <td>Secure key storage, auto-restart, environment configuration</td>
+                    </tr>
+                    <tr>
+                        <td>Monitoring, alerts, and logging</td>
+                        <td>15–25 hours</td>
+                        <td>Telegram integration, alert logic design, log management</td>
+                    </tr>
+                    <tr>
+                        <td>Testing, debugging, live validation</td>
+                        <td>30–50 hours</td>
+                        <td>Edge cases only appear when real money is on the line</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>That is 160 to 275 hours of work. At a conservative estimate of 20 focused hours per week — which would be extraordinary for someone doing this alongside actual trading — you're looking at 8 to 14 weeks before you have something trustworthy.</p>
+
+            <p>And that's the version without the bugs that show up in week three when you realize your position sizing logic doesn't account for partially filled orders from the previous session. Or the Saturday morning when your bot silently stopped running because a Python dependency updated itself and broke the environment.</p>
+
+            <p>Chen Wei reached out to Blue Digix on day eleven. His bot still didn't execute a single live trade. He'd invested over 80 hours of development time and hadn't written one line of actual trading logic.</p>
+
+            <p>We had his bot running in production seven days after our first call.</p>
+
+            <div class="guide-cta-box">
+                <h3>If 200+ Hours of Development Isn't Your Weekend Project, We Can Help.</h3>
+                <p>Blue Digix builds Polymarket trading bots professionally. You provide your Polymarket account and trading capital. We build the entire infrastructure — authentication, gas management, order execution, wallet tracking, risk controls, monitoring — and deploy it in 5–7 days.</p>
+                <a href="https://calendly.com/bluedigix/client-acquisition-fit-call" class="cta-btn">Book a Free Strategy Call →</a>
+            </div>
+
+            <h2>What "We Build It For You" Actually Means</h2>
+
+            <p>Blue Digix is an automation infrastructure team. We build technical systems for traders, operators, and business owners who have identified the bottleneck in their operation and want it solved professionally rather than expensively-DIY'd. You might recognize our work from the business automation side — we build <a href="/guides/clickfunnels-vs-gohighlevel-service-business/">client acquisition infrastructure for service businesses</a>, automated lead systems for <a href="/guides/gohighlevel-for-plumbers/">plumbers</a>, <a href="/guides/gohighlevel-for-roofing-companies/">roofing companies</a>, and other contractors who need systems to run without babysitting. The principle is identical for Polymarket: you have an edge, we build the infrastructure that lets you deploy it properly.</p>
+
+            <p>Here is what our done-for-you Polymarket trading bot build includes:</p>
+
+            <h3>Complete Authentication and API Integration</h3>
+
+            <p>We handle every layer of Polymarket API integration — L1 key derivation, credential management, CLOB API authentication, and session handling for long-running processes. By the time we hand you the keys, authentication is solved and stable. No more "invalid credentials" errors that don't tell you which of the six possible reasons is the actual cause.</p>
+
+            <p>We also handle rate limit management and implement backoff logic so your bot doesn't get temporarily blocked during high-frequency market events when you most want it executing.</p>
+
+            <h3>Gas Management on Polygon</h3>
+
+            <p>We implement gas estimation logic that handles Polygon network congestion gracefully, transaction retry with appropriate gas bumping, nonce sequencing for concurrent order submission, and MATIC balance monitoring with automatic alerts before your gas runs out. The bot will not fail silently because a transaction was underpriced — it will retry intelligently and alert you if the retry threshold is exceeded.</p>
+
+            <h3>CLOB Order Execution with Slippage Controls</h3>
+
+            <p>Order execution is built to handle the real structure of Polymarket's order book: pre-execution depth checks to validate liquidity, configurable slippage tolerance, partial fill handling, and order state tracking that accurately reflects whether your position was fully executed, partially executed, or rejected. You will not be left with ambiguous position state because the bot lost track of an order mid-execution.</p>
+
+            <h3>Whale Wallet Tracking (Configured to Your Strategy)</h3>
+
+            <p>If your strategy involves tracking informed wallets, we build the full on-chain tracking infrastructure: RPC-based wallet monitoring, Polymarket transaction signature parsing, signal filtering to separate directional positions from noise, and configurable entry timing logic. We work with you during the setup call to identify which wallets are worth tracking for your specific market focus and configure the system accordingly. You can bring your own wallet list or we can assist with selection based on historical on-chain performance data.</p>
+
+            <h3>Professional Risk Controls</h3>
+
+            <p>This is non-negotiable. Every bot we deploy includes:</p>
+
+            <ul>
+                <li><strong>Position sizing rules</strong> — maximum position as a defined percentage of current bankroll, recalculated dynamically</li>
+                <li><strong>Per-market exposure caps</strong> — maximum capital deployed into any single event</li>
+                <li><strong>Daily loss circuit breakers</strong> — the bot pauses automatically if losses exceed your defined threshold, with an alert sent to you immediately</li>
+                <li><strong>Concurrent position limits</strong> — hard cap on how many positions can be open simultaneously</li>
+                <li><strong>Slippage maxima</strong> — the bot will not execute a trade if the pre-execution order book check shows insufficient liquidity at an acceptable price</li>
+            </ul>
+
+            <p>We will not deploy a bot without these controls in place. Your capital protection is part of the infrastructure we deliver, not an optional add-on.</p>
+
+            <h3>VPS Provisioning and Server Configuration</h3>
+
+            <p>We provision and configure the server your bot runs on. This is not a shared hosting account — it's a dedicated compute instance sized appropriately for your bot's workload. We handle OS configuration, dependency installation, security hardening, process management setup (so the bot restarts automatically on crash), and log management. The server runs cleanly and is configured so that you never need to SSH into it to keep it operational.</p>
+
+            <h3>Telegram Alert System</h3>
+
+            <p>From the moment your bot makes its first trade, you receive a Telegram notification. Every entry, every exit, every error, every circuit breaker event. Daily P&amp;L and activity summaries. Low gas balance alerts. Bot health status checks. You have complete visibility into what your system is doing without needing to monitor a server dashboard. You can be offline for hours and come back to a clear, accurate picture of your positions.</p>
+
+            <h3>30-Day Support Window</h3>
+
+            <p>After deployment, we are available for 30 days for any issue, configuration adjustment, or unexpected behavior. Most edge cases surface in the first two weeks of live operation. We want to be available when they do. Support during this window is direct — you reach the engineers who built your system, not a ticketing queue.</p>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <span class="stat-number">5–7</span>
+                    <span class="stat-label">Days from call to live trading</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Dev hours replaced by our team</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">30</span>
+                    <span class="stat-label">Days of included post-launch support</span>
+                </div>
+            </div>
+
+            <h2>What You Need to Have Before We Build</h2>
+
+            <p>We build the infrastructure. You provide the trading operation. Specifically, you need:</p>
+
+            <ul>
+                <li>An active Polymarket account — you control this, we never have access to it</li>
+                <li>Trading capital in your Polymarket wallet — we build on top of your funds, we never hold them</li>
+                <li>A defined strategy or market focus — we configure the bot to match how you trade, not a generic template</li>
+                <li>A Telegram account for receiving alerts</li>
+            </ul>
+
+            <p>You do not need technical knowledge. You do not need to understand how any of the infrastructure works to benefit from having it. You just need to be a trader with a real edge who is currently limited by execution capacity rather than by the quality of your analysis.</p>
+
+            <p>Chen Wei's configuration, for reference: he tracks three wallets he'd been following manually for months, focuses on macro economic markets, runs with a maximum 8% position size per trade and a 15% daily loss circuit breaker, and has the bot set to enter only when a tracked wallet enters above a minimum size threshold (filtering out small test positions). That configuration took about 90 minutes to scope during our strategy call and was deployed and live within a week.</p>
+
+            <h2>The Investment and What You Get</h2>
+
+            <p>The done-for-you Polymarket trading bot build is priced as a one-time setup engagement. The fee is $3,000 to $5,000 depending on the complexity of your configuration.</p>
+
+            <p>Most clients fall in the $3,000 to $4,000 range — this covers a standard configuration with wallet tracking, full risk controls, Telegram alerts, VPS provisioning, and the 30-day support window. More complex setups involving multiple independent tracking strategies, advanced market-specific logic, or custom signal filtering move toward the higher end of the range.</p>
+
+            <p>You'll receive a specific quote during the strategy call, before any commitment. There are no surprises after you've signed.</p>
+
+            <p>What the one-time fee includes:</p>
+
+            <ul>
+                <li>VPS provisioning and server security configuration</li>
+                <li>Full Polymarket API integration (authentication, CLOB order execution, gas management)</li>
+                <li>Wallet tracking infrastructure (configured to your strategy)</li>
+                <li>Complete risk control suite (position sizing, exposure limits, circuit breakers, slippage controls)</li>
+                <li>Telegram alert system with trade notifications and daily summaries</li>
+                <li>Process management and auto-restart configuration</li>
+                <li>30-day post-deployment support window</li>
+            </ul>
+
+            <p>After the 30-day support window, there is an optional ongoing monitoring service at $500 per month. This covers proactive infrastructure health checks, bot configuration updates when Polymarket's API changes, performance reviews, and continued priority access to the support team for troubleshooting. It is optional — many clients manage the system independently after the first month — but it's available for those who want ongoing professional oversight of their trading infrastructure.</p>
+
+            <p>For context on value: the build replaces 200+ hours of development work. At even a modest contractor rate, you're talking about $15,000 to $30,000 in development cost to get the same result. Most traders who've looked seriously at building this themselves have gotten a few hundred hours into it, realized the scope, and concluded the professional build is the obvious economic decision.</p>
+
+            <h2>Who This Is Right For</h2>
+
+            <p>This is not a service for everyone. The economics make sense for a specific type of trader.</p>
+
+            <p>This is right for you if:</p>
+
+            <ul>
+                <li>You're already active on Polymarket and understand how prediction markets work</li>
+                <li>You have a defined trading approach — a market focus, wallets you track, a position sizing philosophy — and the bottleneck is execution, not strategy</li>
+                <li>You're missing opportunities because you can't monitor markets 24 hours a day</li>
+                <li>You've looked at building this yourself and concluded the development time is not how you want to spend the next two months</li>
+                <li>You have meaningful capital deployed — the setup cost makes economic sense for traders with substantial positions, not someone testing with a few hundred dollars</li>
+            </ul>
+
+            <p>This is not right for you if you're brand new to Polymarket and still learning how prediction markets work. The bot amplifies an existing edge — it does not create one. If your strategy is still in development, the honest advice is to keep trading manually until you have consistent results you want to scale, then come back to us.</p>
+
+            <p>We also build systems for service-based businesses — if you're an operator looking at <a href="/guides/gohighlevel-vs-servicetitan-contractors/">automating your contractor business</a>, the same infrastructure-first philosophy applies across everything we build.</p>
+
+            <h2>What Happens After You Book a Strategy Call</h2>
+
+            <p>The strategy call is 30 minutes. We use it to understand your current setup: what you're trading, how you're currently executing, what wallets or signals you rely on, what your risk tolerance looks like, and what the specific configuration of your bot should be.</p>
+
+            <p>Here's the full sequence:</p>
+
+            <ol>
+                <li><strong>Strategy call (30 min)</strong> — We review your trading approach, scope the configuration, and quote your specific setup. You leave the call with a clear picture of exactly what we build and what it costs.</li>
+                <li><strong>Onboarding document</strong> — If it's a fit, we send you a short onboarding document covering the information we need: your wallet address (for tracking and gas configuration), your target wallet list (if you have one), your risk parameters, and your Telegram handle for alerts.</li>
+                <li><strong>Build phase (5–7 days)</strong> — We provision the server, build the integration, configure your specific risk controls and wallet tracking, and test the system end-to-end on testnet before any live capital is involved.</li>
+                <li><strong>Deployment and handover</strong> — We walk you through the live system, confirm alerts are firing correctly, and hand over documentation covering how to adjust configuration parameters if your strategy evolves.</li>
+                <li><strong>30-day support window</strong> — We stay available throughout the first month for any issues, adjustments, or questions.</li>
+            </ol>
+
+            <p>Most clients are live and trading within a week of the strategy call. Chen Wei was executing automated trades on day seven.</p>
+
+            <div class="highlight-box">
+                <p>"I spent 11 days not building a bot. Blue Digix deployed one in a week. The math was obvious once I actually looked at it — I'm a trader, not a developer. Spending 200 hours being a mediocre developer to avoid paying someone to do it properly was the wrong calculation." — Chen Wei, Singapore</p>
+            </div>
+
+            <h2>The Honest Answer to Whether You Should Build It Yourself</h2>
+
+            <p>Some people should build their own Polymarket trading bot. If you're a software engineer who enjoys this kind of infrastructure work and has the time, building it yourself gives you complete control and a deep understanding of every layer of the system. That's genuinely valuable. If you want to go that route, the technical sections above should help you map the real scope — go in with clear eyes about what you're signing up for.</p>
+
+            <p>Most people reading this page are not in that category. They're traders. They have an edge in prediction markets and a Python script they found on GitHub that looked promising until authentication didn't work and they spent a week reading error messages they didn't understand.</p>
+
+            <p>For those people: the time you'd spend building the infrastructure is time you could spend trading, or sleeping, or doing something else entirely. The infrastructure is solved. You just need someone to build it for you.</p>
+
+            <p>That's what we do.</p>
+
+            <div class="guide-cta-box">
+                <h3>Ready to Go From 11 Days of Setup to Live in 5–7 Days?</h3>
+                <p>Book a free 30-minute strategy call. We'll scope your exact configuration, quote your specific setup, and tell you honestly whether automation is the right move for where you are right now. No pressure, no obligation.</p>
+                <a href="https://calendly.com/bluedigix/client-acquisition-fit-call" class="cta-btn">Book Your Free Strategy Call →</a>
+            </div>
+
+            <h2>One More Thing Before You Decide</h2>
+
+            <p>Chen Wei's bot executed 47 trades in its first week live. He'd been asleep for 19 of them — entries on macro events that resolved in Asian market hours, the exact trades he'd been missing for 14 months of manual execution.</p>
+
+            <p>He told us afterward that the part he didn't expect was how much mental space it freed up. Not just the hours — the hours were obvious. But the mental overhead of constantly monitoring, of always wondering whether there was a trade he was missing, of waking up at 2 AM to check a market he was tracking — that weight was gone. The bot handles it. He reviews the Telegram summary in the morning over coffee and gets on with his day.</p>
+
+            <p>The infrastructure exists. It works. The question is only whether it's the right move for your situation.</p>
+
+            <p>Book the call. Find out.</p>
+
+            <div class="dual-cta">
+                <div class="cta-box cta-box-primary">
+                    <h3>Build It Professionally. Get Live in 5–7 Days.</h3>
+                    <p>Book a free strategy call. We scope your configuration, quote your setup, and deploy in a week. You provide the account and capital. We build everything else.</p>
+                    <a href="https://calendly.com/bluedigix/client-acquisition-fit-call" class="btn btn-white">Book Your Free Strategy Call →</a>
+                </div>
+                <div class="cta-box">
+                    <h3>Questions First?</h3>
+                    <p>Not ready to book? Get in touch and we'll walk you through exactly what's included and whether your setup is a good candidate for automation.</p>
+                    <a href="/contact" class="btn btn-primary">Get in Touch →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="related-guides">
+                <h3>Keep Reading</h3>
+                <ul>
+                    <li><a href="/guides/polymarket-trading-bot-setup/">Polymarket Trading Bot Setup — Full Done-For-You Service</a></li>
+                    <li><a href="/guides/polymarket-api-trading-bot-setup/">Polymarket API Trading Bot Setup — What the Integration Actually Involves</a></li>
+                    <li><a href="/guides/polymarket-bot-developer-for-hire/">Hire a Polymarket Bot Developer — What to Look For</a></li>
+                    <li><a href="/guides/clickfunnels-vs-gohighlevel-service-business/">ClickFunnels vs GoHighLevel for Service Businesses</a></li>
+                    <li><a href="/guides/gohighlevel-for-plumbers/">GoHighLevel for Plumbers</a></li>
+                    <li><a href="/guides/gohighlevel-for-roofing-companies/">GoHighLevel for Roofing Companies</a></li>
+                    <li><a href="/guides/gohighlevel-vs-servicetitan-contractors/">GoHighLevel vs ServiceTitan for Contractors</a></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="container">&copy; 2026 Blue Digix, LLC. All rights reserved.</div>
+    </footer>
+</body>
+</html>

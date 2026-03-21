@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G94LPHFXJ4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G94LPHFXJ4');
+    </script>
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '591636233557540');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=591636233557540&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "vyrsi70hhe");
+    </script>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymarket Whale Tracking Bot — Monitor Every Wallet Move in Real Time | Blue Digix</title>
+    <meta name="description" content="A custom Polymarket whale tracking bot that monitors high-performing wallet addresses on-chain, sends instant alerts, and optionally auto-executes when whales move. Built by Blue Digix.">
+    <link rel="canonical" href="https://bluedigix.com/guides/polymarket-whale-tracking-bot/">
+
+    <meta property="og:title" content="Polymarket Whale Tracking Bot — Monitor Every Wallet Move in Real Time">
+    <meta property="og:description" content="A custom Polymarket whale tracking bot that monitors high-performing wallet addresses on-chain, sends instant alerts, and optionally auto-executes when whales move. Built by Blue Digix.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bluedigix.com/guides/polymarket-whale-tracking-bot/">
+    <meta property="og:site_name" content="Blue Digix">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Polymarket Whale Tracking Bot",
+        "description": "Custom-built bot infrastructure that monitors high-performing Polymarket whale wallet addresses in real time, delivers instant Telegram alerts on every on-chain move, and optionally auto-executes mirrored positions with configurable risk controls.",
+        "provider": {
+            "@type": "Organization",
+            "name": "Blue Digix",
+            "url": "https://bluedigix.com"
+        },
+        "areaServed": "Worldwide",
+        "serviceType": "Prediction Market Automation",
+        "url": "https://bluedigix.com/guides/polymarket-whale-tracking-bot/",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "price": "3000",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "minPrice": "3000",
+                "maxPrice": "5000",
+                "priceCurrency": "USD"
+            }
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --navy: #0A1628; --accent: #2563EB; --accent-hover: #1D4ED8; --bg: #FAF8F5; --bg-warm: #F3F0EB; --bg-card: #FFFFFF; --text: #1A1A1A; --text-secondary: #5C5C5C; --text-muted: #8A8A8A; --border: rgba(0,0,0,0.08); --border-strong: rgba(0,0,0,0.14); }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+        .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
+        .article-container { max-width: 760px; margin: 0 auto; padding: 0 clamp(24px,5vw,56px); }
+        nav { padding: 20px 0; background: rgba(250,248,245,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.5px; }
+        .nav-logo span { color: var(--accent); }
+        .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-cta { background: var(--navy) !important; color: white !important; padding: 10px 24px !important; border-radius: 6px; font-weight: 600 !important; }
+        .article-header { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+        .breadcrumb { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+        .breadcrumb a { color: var(--accent); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        h1 { font-family: 'Outfit', sans-serif; font-size: clamp(30px, 4.5vw, 46px); font-weight: 700; color: var(--navy); letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 20px; }
+        .article-meta { display: flex; gap: 24px; flex-wrap: wrap; font-size: 14px; color: var(--text-muted); }
+        .article-content { padding: 56px 0; }
+        .article-content h2 { font-family: 'Outfit', sans-serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--navy); letter-spacing: -0.02em; margin: 48px 0 20px; padding-top: 16px; }
+        .article-content h2:first-child { margin-top: 0; }
+        .article-content h3 { font-family: 'Outfit', sans-serif; font-size: clamp(18px, 2vw, 22px); font-weight: 600; color: var(--navy); margin: 32px 0 12px; }
+        .article-content p { font-size: 17px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.8; }
+        .article-content ul, .article-content ol { margin: 20px 0 28px 24px; color: var(--text-secondary); }
+        .article-content li { font-size: 17px; margin-bottom: 12px; line-height: 1.7; }
+        .article-content li strong { color: var(--text); }
+        .article-content a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(37,99,235,0.3); text-underline-offset: 3px; transition: text-decoration-color 0.3s; }
+        .article-content a:hover { text-decoration-color: var(--accent); }
+        .callout { background: var(--bg-warm); border-left: 4px solid var(--accent); padding: 24px 28px; border-radius: 0 10px 10px 0; margin: 32px 0; }
+        .callout p { margin-bottom: 0; font-size: 16px; }
+        .callout strong { color: var(--navy); }
+        .cta-box { background: var(--bg-card); border: 2px solid var(--border); border-radius: 14px; padding: 36px; margin: 40px 0; text-align: center; }
+        .cta-box h3 { font-family: 'Outfit', sans-serif; font-size: 22px; color: var(--navy); margin: 0 0 12px; }
+        .cta-box p { font-size: 16px; margin-bottom: 24px; }
+        .cta-box-primary { background: var(--navy); border-color: var(--navy); }
+        .cta-box-primary h3, .cta-box-primary p { color: white; }
+        .cta-box-primary p { opacity: 0.8; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.3s; }
+        .btn-primary { background: var(--accent); color: white !important; text-decoration: none !important; }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.3); }
+        .btn-white { background: white; color: var(--navy) !important; text-decoration: none !important; }
+        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+        .btn-outline { background: transparent; color: var(--navy); border: 2px solid var(--border-strong); text-decoration: none !important; }
+        .btn-outline:hover { border-color: var(--navy); }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; margin: 32px 0; }
+        .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; text-align: center; }
+        .stat-card .stat-number { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+        .stat-card .stat-label { font-size: 14px; color: var(--text-muted); line-height: 1.4; }
+        .service-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 16px; }
+        .service-table th { background: var(--navy); color: white; padding: 14px 18px; text-align: left; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.02em; }
+        .service-table td { padding: 14px 18px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+        .service-table tr:last-child td { border-bottom: none; }
+        .service-table tr:nth-child(even) td { background: var(--bg-warm); }
+        .related-guides { background: var(--bg-warm); border-top: 1px solid var(--border); padding: 48px 0; margin-top: 0; }
+        .related-guides .article-container h3 { font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--navy); margin-bottom: 20px; }
+        .related-guides ul { list-style: none; margin: 0; padding: 0; }
+        .related-guides ul li { margin-bottom: 12px; }
+        .related-guides ul li a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(37,99,235,0.3); text-underline-offset: 3px; font-size: 16px; }
+        .related-guides ul li a:hover { text-decoration-color: var(--accent); }
+        footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 12px; background: var(--bg-card); }
+        @media (max-width: 768px) { .nav-links { display: none; } .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="nav-logo">Blue<span>Digix</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/guides/">Guides</a></li>
+                <li><a href="/contact" class="nav-cta">Book a Growth Audit</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <article>
+        <header class="article-header">
+            <div class="article-container">
+                <nav class="breadcrumb">
+                    <a href="/">Home</a> / <a href="/guides/">Guides</a> / Polymarket Whale Tracking Bot
+                </nav>
+                <h1>He Had 47 Wallet Addresses in a Spreadsheet and Was Checking the Blockchain Explorer Six Times a Day — Until We Built Him a Bot That Does It Automatically</h1>
+                <div class="article-meta">
+                    <span>Updated March 2026</span>
+                    <span>·</span>
+                    <span>16 min read</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="article-content">
+            <div class="article-container">
+
+                <p>Osman from Istanbul had built something most Polymarket traders would envy: a detailed, meticulously maintained database of whale wallets.</p>
+
+                <p>Not just addresses. He had win rates by market category. Average position sizes. Typical entry timing — how far in advance of major events these wallets would load up. The markets they favored. The ones they avoided. He had spent months accumulating this intelligence by manually cross-referencing leaderboard data with the Polygon blockchain explorer, tracking address behavior across hundreds of resolved markets.</p>
+
+                <p>On paper, Osman knew exactly whose moves to follow. The problem was entirely operational.</p>
+
+                <p>Checking the blockchain explorer six times a day — more during volatile news cycles — was not sustainable. And even when he did catch a whale moving in real time, the sequence of actions required to act on it ate up minutes he did not have. Open the wallet address. Confirm the transaction. Identify the market. Navigate to the market on Polymarket. Check the current odds against the whale's recorded entry odds. Decide whether the spread was still worth it. Place the trade.</p>
+
+                <p>By step four, odds had already moved. By step six, they had moved further. On a market where a tracked whale entered at 58 cents, Osman was consistently landing at 65 or 66. He was following the right intelligence with the wrong tool.</p>
+
+                <p>What he needed was not better analysis. He already had better analysis than most Polymarket participants. What he needed was infrastructure — a Polymarket whale tracking bot that would watch those 47 wallets around the clock, detect moves the instant they hit the chain, send him an immediate alert, and optionally execute a mirrored position before the odds gap widened.</p>
+
+                <p>Blue Digix built it. This page explains exactly what that infrastructure looks like, how it works, what it costs, and who it is built for.</p>
+
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">47+</div>
+                        <div class="stat-label">Wallet addresses tracked simultaneously per deployment</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">&lt;8s</div>
+                        <div class="stat-label">Median detection-to-alert latency on live deployments</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Continuous on-chain monitoring, no manual checking required</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">On-chain — monitors real Polygon transactions, not scraped data</div>
+                    </div>
+                </div>
+
+                <h2>Why the Spreadsheet Approach Breaks Down</h2>
+
+                <p>Manual whale tracking is not a bad idea executed poorly. It is a fundamentally unscalable approach to a problem that requires automation. The issue is structural, not a matter of effort or discipline.</p>
+
+                <p>Here is what happens when a Polymarket whale takes a meaningful position on a market:</p>
+
+                <p>The transaction hits the Polygon blockchain. It is immediately visible to anyone watching that wallet address in a block explorer. Within seconds, sophisticated on-chain monitoring systems — run by other algorithmic traders and data services — detect the transaction and process it. Within a minute or two, market odds begin to shift as automated followers and attentive manual traders pile in. Within five to ten minutes, a substantial portion of the value in following the whale at their entry price has evaporated.</p>
+
+                <p>A manual trader checking the blockchain explorer six times a day operates on a monitoring cycle measured in hours. The value window for following a whale move is measured in seconds to minutes. The mismatch is not a gap — it is a chasm.</p>
+
+                <p>And that is the optimistic version of the manual tracking problem. The deeper issues compound on top of it:</p>
+
+                <ul>
+                    <li><strong>Cognitive load scales with wallet count.</strong> Tracking five wallets across dozens of active markets is manageable with discipline. Tracking forty-seven wallets across all active Polymarket markets simultaneously — including intraday position changes, partial exits, and new entries — is cognitively impossible. The human attention system is not built for this. Automation is not an enhancement to the workflow; it is the only viable workflow at that scale.</li>
+                    <li><strong>Sleep and time zones create blind spots.</strong> Whales do not restrict their trading activity to any particular time window. Major positions are established at 3am local time, during business hours in other hemispheres, during breaking news events that occur unpredictably. A manual monitor captures the moves that happen to fall within their waking hours and available attention. A bot captures all of them.</li>
+                    <li><strong>Historical data becomes stale without continuous updates.</strong> A whale wallet that showed 71% win rate over the previous six months may have shifted strategy, reduced activity, or entered a performance regression. Without continuous tracking of live behavior, your wallet scoring data degrades in accuracy over time. A bot generates a live, continuously updated behavioral record for every tracked address.</li>
+                    <li><strong>Decision fatigue corrupts execution quality.</strong> Even when a manual tracker spots a move in time, they face a real-time decision: is this worth following given current odds? If the market looks counterintuitive, they hesitate. That hesitation costs odds. A bot executes the configured strategy without deliberation — eliminating the performance drag of discretionary second-guessing on individual trades.</li>
+                    <li><strong>Single points of failure are unmanaged.</strong> If you are asleep, sick, traveling, or simply distracted when a high-confidence whale position gets established, that opportunity disappears. The bot does not have off days.</li>
+                </ul>
+
+                <div class="callout">
+                    <p><strong>The core insight:</strong> Osman's analysis was excellent. His intelligence on which wallets to follow was genuine competitive advantage. The spreadsheet was the right data structure for the wrong layer of the problem. The analysis layer was working. The execution and monitoring layer — the infrastructure that converts intelligence into timely action — was completely manual. That is the layer a whale tracking bot addresses.</p>
+                </div>
+
+                <h2>What a Polymarket Whale Tracking Bot Actually Does</h2>
+
+                <p>A whale tracking bot is not a single piece of software. It is a stack of interconnected systems that together convert raw blockchain data into actionable intelligence — and optionally into executed trades. Here is how each layer works:</p>
+
+                <h3>Layer 1: On-Chain Wallet Monitoring</h3>
+
+                <p>The foundation of the entire system is a real-time connection to Polygon blockchain data. The bot subscribes to transaction streams and filters for activity originating from your configured list of tracked wallet addresses. Every time a tracked wallet initiates a transaction, the bot captures it immediately — not by polling the blockchain at intervals, but by receiving event-driven notifications as transactions are confirmed.</p>
+
+                <p>This is fundamentally different from checking a block explorer manually, or even using a block explorer's alert email feature. Email alerts introduce latency measured in minutes. The bot's event-driven architecture introduces latency measured in seconds — typically under ten seconds from on-chain confirmation to alert delivery on live deployments.</p>
+
+                <p>The monitoring layer runs continuously on a dedicated VPS. It does not depend on your local machine being on, your browser being open, or any manual action on your part. It is always running.</p>
+
+                <h3>Layer 2: Transaction Classification and Filtering</h3>
+
+                <p>Not every transaction from a tracked wallet is a Polymarket position worth acting on. Wallets move funds between accounts, interact with DeFi protocols, pay gas fees, and execute many other transactions that have nothing to do with prediction market activity. The classification layer filters the raw transaction stream and identifies specifically:</p>
+
+                <ul>
+                    <li>New position entries on Polymarket markets — which market, which outcome, at what odds, for what size</li>
+                    <li>Position increases — adding to an existing stake, signaling conviction</li>
+                    <li>Position exits — partial or full redemptions, which can signal a whale's assessment of current odds</li>
+                    <li>Position reversals — a whale switching from one outcome to the other, a high-signal behavioral indicator</li>
+                </ul>
+
+                <p>Each classified transaction is evaluated against your configured thresholds: minimum position size to trigger an alert, minimum odds level, market category restrictions, and wallet-specific settings. Transactions that do not meet your criteria are logged but do not generate alerts — keeping your notification stream signal-dense rather than noisy.</p>
+
+                <h3>Layer 3: Behavioral Analysis and Scoring</h3>
+
+                <p>This is the layer that separates a sophisticated whale tracking deployment from a basic blockchain alert service. Beyond simply detecting that a tracked wallet moved, the bot maintains a continuously updated behavioral profile for each tracked address:</p>
+
+                <ul>
+                    <li><strong>Win rate by market category:</strong> Does this wallet have a genuine edge in political markets but perform at average in sports markets? The behavioral scoring layer captures this and can weight alerts accordingly.</li>
+                    <li><strong>Typical position sizing patterns:</strong> When a wallet takes a position that is significantly larger than its historical average for that category, that is a high-conviction signal. When it is smaller than average, that may indicate lower confidence or exploratory positioning. The bot flags these deviations.</li>
+                    <li><strong>Entry timing characteristics:</strong> Some whale wallets tend to enter positions very early — days or weeks before resolution. Others enter closer to resolution, effectively making higher-confidence, shorter-duration bets. Understanding a wallet's typical timing profile helps calibrate your own response.</li>
+                    <li><strong>Convergence detection:</strong> When multiple tracked wallets take positions in the same market within a short time window, that convergence is a particularly strong signal. The bot identifies and flags convergence events with elevated priority alerts.</li>
+                    <li><strong>Exit pattern analysis:</strong> A whale wallet exiting a position before resolution can be as informative as the entry. Did they exit early at a profit, suggesting they see the odds as having moved sufficiently? Or did they exit at a loss, suggesting new information? Exit patterns feed back into the behavioral profile.</li>
+                </ul>
+
+                <h3>Layer 4: Alert Delivery</h3>
+
+                <p>Every qualifying detection generates an immediate Telegram alert to your configured chat. The alert includes everything you need to evaluate and act on the signal:</p>
+
+                <ul>
+                    <li>Which tracked wallet triggered the alert, with its historical win rate and behavioral summary</li>
+                    <li>The market name and current odds at time of detection</li>
+                    <li>The whale's entry odds (reconstructed from the transaction) versus current market odds — the tracking spread</li>
+                    <li>The size of the whale's position relative to their historical average for this category</li>
+                    <li>Any convergence signal — whether other tracked wallets have recently taken positions in the same market</li>
+                    <li>A direct link to the market on Polymarket for immediate review</li>
+                </ul>
+
+                <p>If you receive an alert at 2am local time, you can evaluate it in thirty seconds and decide whether to act — or let the bot handle it automatically based on your pre-configured rules. You are informed without being required to monitor.</p>
+
+                <!-- Inline CTA 1 -->
+                <div style="background: linear-gradient(135deg, rgba(37,99,235,0.08) 0%, rgba(37,99,235,0.02) 100%); border: 1px solid rgba(37,99,235,0.2); border-radius: 12px; padding: 28px 32px; margin: 40px 0; text-align: center;">
+                    <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; color: var(--navy);">Have a wallet list you want monitored?</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 1rem;">Book a 30-minute call. We will review your target addresses, discuss your alert and execution preferences, and scope your build with a fixed-price quote before any commitment.</p>
+                    <a href="https://calendly.com/bluedigix/client-acquisition-fit-call" style="display: inline-block; background: #2563EB; color: #fff; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1rem;">Book a Free Strategy Call →</a>
+                </div>
+
+                <h3>Layer 5: Optional Auto-Execution</h3>
+
+                <p>For clients who want the bot to go beyond alerting and actually mirror positions automatically, the auto-execution layer integrates directly with your Polymarket account via the Polymarket API. When the monitoring layer detects a qualifying whale move and all configured conditions are met, the bot executes a corresponding position in your account — typically within seconds of the detection event.</p>
+
+                <p>This is the layer that closes the latency gap entirely. Where a manual trader receiving an alert still needs to review it, navigate to the market, evaluate odds, and place a trade — a process taking two to five minutes at minimum — the auto-execution layer compresses that sequence to milliseconds of computational decision time.</p>
+
+                <p>Auto-execution is governed by a comprehensive risk control system that you configure before deployment. No position is executed without explicit parameters defining exactly how the bot should behave in each scenario.</p>
+
+                <h2>The Risk Control Framework</h2>
+
+                <p>This section matters. Unconfigured auto-execution is not a feature — it is a liability. Every Blue Digix whale tracking bot deployment with auto-execution enabled includes a full risk control configuration designed around your specific situation and preferences.</p>
+
+                <h3>Position-Level Controls</h3>
+
+                <ul>
+                    <li><strong>Maximum position size per trade:</strong> No single auto-executed position exceeds your configured cap, regardless of the whale's position size. You set the ceiling; the bot respects it unconditionally.</li>
+                    <li><strong>Minimum odds threshold:</strong> If current market odds at time of detection have already moved beyond your configured threshold — because other followers beat you to it — the bot skips the trade rather than entering at degraded odds. You only mirror at the prices that make the trade worthwhile.</li>
+                    <li><strong>Maximum tracking spread:</strong> You configure the maximum acceptable gap between the whale's documented entry odds and your current entry odds. A 3-cent spread might be acceptable; a 12-cent spread might not be. The bot enforces this boundary automatically.</li>
+                    <li><strong>Market category filters:</strong> Auto-execution can be restricted to specific Polymarket categories — politics only, crypto only, a custom combination — or set to exclude categories you do not want exposure to.</li>
+                </ul>
+
+                <h3>Portfolio-Level Controls</h3>
+
+                <ul>
+                    <li><strong>Daily capital deployment cap:</strong> The maximum total amount the bot will deploy in auto-executed positions within a single day. Protects against a runaway sequence of positions during a volatile news cycle.</li>
+                    <li><strong>Weekly exposure limit:</strong> A higher-level cap on total weekly deployment. Even if individual trades are small, the weekly limit prevents gradual overexposure during a sustained active period.</li>
+                    <li><strong>Maximum simultaneous open positions:</strong> The bot will not open new auto-executed positions once this count is reached, regardless of how strong an incoming signal is.</li>
+                    <li><strong>Per-wallet allocation limits:</strong> Different tracked wallets get different maximum follow amounts. Your highest-confidence wallet might get a 3x allocation limit compared to a supplementary tracker you are less certain about.</li>
+                </ul>
+
+                <h3>Convergence and Signal Strength Multipliers</h3>
+
+                <p>For clients who want the bot to weight position sizes dynamically based on signal strength, the configuration system supports multipliers. A single-wallet detection triggers a base follow amount. Two tracked wallets in the same market triggers a 1.5x multiplier. Three or more wallets converging triggers a 2x multiplier — or whatever values you configure. Stronger signals get proportionally larger responses, automatically.</p>
+
+                <div class="callout">
+                    <p><strong>Important:</strong> Blue Digix does not manage your funds, make trading decisions on your behalf, or have access to your capital. We build and configure infrastructure that you operate using your own Polymarket account. The risk control framework exists to enforce the parameters you set — it does not substitute for your own judgment about what risk levels are appropriate for your situation.</p>
+                </div>
+
+                <h2>Wallet Identification and Selection Methodology</h2>
+
+                <p>The quality of a whale tracking bot is directly tied to the quality of the wallets it tracks. Monitoring the wrong addresses — wallets with historical luck rather than genuine edge, or wallets that have since gone dormant or changed strategy — generates noise rather than signal.</p>
+
+                <p>Before every deployment, Blue Digix conducts a wallet scoring analysis on candidate addresses. If you are bringing a list of wallets you have already identified — like Osman's 47-address spreadsheet — we run that list through our scoring methodology. If you want us to identify high-performing wallets from scratch, we do that as part of the build process.</p>
+
+                <p>The scoring analysis evaluates:</p>
+
+                <ul>
+                    <li><strong>Historical win rate with sample size adjustment:</strong> A wallet that is 8 for 8 on resolved markets is statistically less reliable than a wallet that is 180 for 240. Win rates are adjusted for sample size using confidence interval methods that penalize small samples.</li>
+                    <li><strong>Win rate by category:</strong> A wallet's aggregate win rate can obscure category-specific edges. We decompose performance by market type to identify whether a wallet's edge is broad or concentrated in specific domains.</li>
+                    <li><strong>Average entry timing versus market movement:</strong> We measure how early wallets typically enter relative to when the broader market began moving. Early, consistent entry indicates genuine information advantage. Late entry into already-moving markets is a different signal quality entirely.</li>
+                    <li><strong>Position sizing consistency:</strong> Wallets with consistent sizing patterns are more predictable to follow than wallets with erratic sizing. Consistent position sizing also makes risk control calibration more reliable.</li>
+                    <li><strong>Recency weighting:</strong> A wallet with strong performance two years ago and average performance in the last six months is weighted differently than a wallet with consistent recent performance. Markets evolve; whale edges do too.</li>
+                    <li><strong>Activity level:</strong> A wallet that was highly active twelve months ago but has been dormant for three months may have lower future value as a tracking target. Activity recency is factored into the scoring.</li>
+                </ul>
+
+                <p>The output of the wallet scoring analysis is a recommended tracking list with individual rationale for each inclusion, historical performance data, and suggested allocation weighting. This is the foundation your bot runs on — and getting it right before deployment is more valuable than any configuration optimization after the fact.</p>
+
+                <h2>The Full Technical Stack</h2>
+
+                <p>For clients who want to understand what they are getting at a technical level, here is the infrastructure stack a Blue Digix whale tracking bot deployment comprises:</p>
+
+                <h3>Blockchain Data Layer</h3>
+
+                <p>The bot connects to Polygon network data via websocket-based event subscriptions, not HTTP polling. This is the architectural choice that enables sub-ten-second detection latency. Polling-based architectures check for new data at intervals — the detection latency is bounded by the polling interval. Event-driven architectures receive data as it arrives — detection latency is bounded only by network propagation time and processing speed.</p>
+
+                <p>We use redundant data provider connections to eliminate single points of failure at the data layer. If a primary connection drops, the secondary takes over without interrupting monitoring.</p>
+
+                <h3>Transaction Processing Engine</h3>
+
+                <p>The processing engine classifies incoming transactions, extracts market and position data from Polymarket contract interactions, scores the signal against behavioral profiles, applies your configured filters and thresholds, and routes qualifying events to the alert and execution systems. This layer is built to handle high-frequency data streams without degrading — it does not slow down or miss transactions during periods of high blockchain activity.</p>
+
+                <h3>Behavioral Profile Database</h3>
+
+                <p>Wallet behavioral profiles are stored in a lightweight database that updates in real time as new transactions are detected. Historical performance data going back to the wallet's first recorded Polymarket activity is seeded at deployment time. The database supports the scoring and convergence detection logic that makes the alert system intelligent rather than just fast.</p>
+
+                <h3>Alert System</h3>
+
+                <p>Alerts are delivered via Telegram bot to your configured chat or channel. The alert format is structured for rapid evaluation: key data points first, supporting context second, action link third. You can read and act on an alert in under thirty seconds if needed. Alert formatting, emoji indicators for signal strength, and priority levels are all configurable.</p>
+
+                <h3>Execution Engine (Optional)</h3>
+
+                <p>The execution engine integrates with the Polymarket API to place positions when auto-execution is enabled and a qualifying signal is detected. It handles order construction, gas estimation, transaction submission, and confirmation monitoring. Failed transactions trigger an immediate alert; successful executions generate a confirmation notification with position details.</p>
+
+                <h3>VPS Hosting</h3>
+
+                <p>The entire stack runs on a dedicated VPS provisioned and configured as part of your build. You receive full root access to the server. Blue Digix does not retain ongoing access unless you elect the optional monitoring arrangement. The infrastructure is yours — you own it, you control it, and it continues running whether or not you are actively engaged with Blue Digix.</p>
+
+                <h2>How This Compares to DIY or Generic Scripts</h2>
+
+                <p>It is reasonable to ask whether this capability could be assembled from open-source components or generic automation scripts. The honest answer is: technically yes, practically no — not at the reliability level that matters for live trading infrastructure.</p>
+
+                <p>Generic Polymarket tracking scripts that circulate in developer communities are typically built for demonstration purposes, not production deployment. They lack redundant data connections, so they go dark when the primary provider has an issue. They lack robust error handling, so edge cases — unusual market resolutions, API rate limiting, network timeouts — can cause silent failures that neither alert you nor log properly. They do not include wallet behavioral scoring, so they treat every tracked wallet as equivalent regardless of actual performance characteristics. And they come with no support when something breaks — which it eventually will.</p>
+
+                <p>The difference matters most when it matters most: during high-activity periods when whale moves are most significant, blockchain congestion is highest, and the stakes of a missed detection or a failed execution are largest. That is exactly when fragile infrastructure fails.</p>
+
+                <p>This same principle applies across automated systems generally. Whether you are building trading infrastructure or a client acquisition system for a service business, the quality of the underlying infrastructure determines reliability at scale. The same logic that leads sophisticated service businesses to invest in purpose-built CRM and automation rather than generic tools — see our guide on <a href="/guides/gohighlevel-for-electricians/">GoHighLevel for electricians</a> and how purpose-built systems outperform generic ones — applies equally to trading infrastructure.</p>
+
+                <!-- Inline CTA 2 -->
+                <div style="background: var(--navy); border-radius: 14px; padding: 36px; margin: 40px 0; text-align: center;">
+                    <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 12px;">Ready to Stop Monitoring Manually?</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 1rem;">Book a 30-minute call. We will review your wallet list, scope your bot configuration, and give you a fixed-price quote with a clear delivery timeline. No commitment required.</p>
+                    <a href="https://calendly.com/bluedigix/client-acquisition-fit-call" style="display: inline-block; background: white; color: #0A1628; padding: 14px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1rem;">Book the Call →</a>
+                </div>
+
+                <h2>What Happened With Osman</h2>
+
+                <p>Osman came to the initial call with his spreadsheet open on a second monitor. He walked us through his tracking methodology, the wallets he had identified as highest-confidence, the categories he wanted to focus on, and the alert structure that would work for his schedule. The discovery call took forty-five minutes. We had everything we needed to scope the build.</p>
+
+                <p>The wallet scoring analysis confirmed fifteen of his forty-seven addresses as high-reliability tracking targets — consistent win rates, appropriate sample sizes, recent activity, clean entry timing patterns. We flagged twelve others as supplementary trackers worth monitoring but not worth high-allocation following. The remaining twenty were either statistically insignificant, recently dormant, or showing performance patterns that suggested historical luck rather than repeatable edge.</p>
+
+                <p>He appreciated the culling. Tracking twenty-seven wallets instead of forty-seven meant a cleaner, higher-quality signal stream. Less noise to evaluate. More confidence in the signals that did come through.</p>
+
+                <p>Deployment took nine days from the first call to a live bot. The first week ran in monitoring-only mode — alerts delivered, no auto-execution — so Osman could observe detection timing, verify the alert format worked for his workflow, and confirm the behavioral profiles matched his own notes on the wallets. Everything checked out. He enabled auto-execution on the top eight wallets with conservative position caps for the first month.</p>
+
+                <p>The most immediate change he noticed was not the trade outcomes — those take time to evaluate properly. It was the cognitive relief. The six-times-daily blockchain explorer ritual was gone. His attention was no longer fractured across a monitoring workflow that had been consuming several hours of mental bandwidth per day. He received alerts when something worth acting on happened. He reviewed them when convenient. The infrastructure handled everything else.</p>
+
+                <h2>The Setup Process</h2>
+
+                <p>Here is what the deployment process looks like from initial conversation to live bot:</p>
+
+                <ol>
+                    <li><strong>Discovery call:</strong> We discuss your tracked wallet list or criteria for identifying wallets, your preferred alert structure, whether you want auto-execution, and your risk control parameters. We also assess technical prerequisites — your VPS access preferences and Polymarket account configuration.</li>
+                    <li><strong>Wallet scoring analysis:</strong> Blue Digix runs a full scoring evaluation on candidate addresses. You receive a recommended tracking list with individual rationale, historical performance data, and suggested allocation weighting for each wallet.</li>
+                    <li><strong>Configuration design:</strong> We design your bot's alert thresholds, behavioral scoring weights, risk controls, and — if applicable — auto-execution parameters. This is documented and reviewed with you before any code is written.</li>
+                    <li><strong>Build and VPS deployment:</strong> The bot stack is built and deployed to a dedicated VPS. You receive full access credentials. The server is yours.</li>
+                    <li><strong>Monitoring-only test period:</strong> The bot runs in alert-only mode for a period you define — typically five to ten days. You verify detection latency, confirm alert formatting, and validate behavioral profiles against your own knowledge of the tracked wallets.</li>
+                    <li><strong>Go live:</strong> With your confirmation, auto-execution activates (if configured). You receive a confirmation notification for every executed position.</li>
+                    <li><strong>30-day support window:</strong> Blue Digix is available for configuration adjustments, wallet list updates, and technical issues for thirty days post-launch at no additional cost.</li>
+                </ol>
+
+                <p>Most deployments go from initial call to live monitoring within seven to fourteen days. Auto-execution-enabled deployments sometimes take a few additional days due to the more extensive configuration review and testing process. Rush deployments can be accommodated — discuss timing requirements on your initial call.</p>
+
+                <p>The same operational discipline that makes a well-designed client follow-up system reliable — having clear processes, tested workflows, and systematic quality checks before launch — is what makes a trading bot deployment work when it goes live. Our approach to automated system builds applies the same framework whether the client is a <a href="/guides/manychat-for-contractors/">contractor automating lead follow-up</a> or a prediction market trader deploying whale tracking infrastructure.</p>
+
+                <h2>Who This Is Built For</h2>
+
+                <p>This service is specifically designed for a type of Polymarket participant that already exists. You are a fit if:</p>
+
+                <ul>
+                    <li>You are already active on Polymarket and understand how prediction markets function — this is not a beginner onboarding service</li>
+                    <li>You have done your own analysis of whale wallet performance and believe the tracking thesis has merit for your strategy</li>
+                    <li>You want to monitor a defined list of wallet addresses rather than relying on manually checking block explorers</li>
+                    <li>You have identified the manual monitoring workflow as the primary bottleneck in your current approach — either in terms of time cost or execution speed</li>
+                    <li>You want infrastructure built correctly once, with proper error handling and redundancy, rather than a fragile script that requires constant maintenance</li>
+                    <li>You prefer to stay informed via structured alerts rather than being required to actively monitor dashboards</li>
+                    <li>You understand that infrastructure delivers capability, not guaranteed outcomes — the bot executes the strategy you configure; it does not create edge that does not already exist</li>
+                </ul>
+
+                <p>This service is not a fit if you are new to Polymarket with no existing account, if you want a fully-managed fund arrangement where someone else makes trading decisions, or if you want to deploy very small amounts where the infrastructure investment would not be proportionate to the scale of activity.</p>
+
+                <p>The same principle of matching tools to operational scale applies broadly. Just as a roofing contractor at a certain revenue level needs a proper lead generation system rather than ad-hoc referrals — as we cover in our guide on <a href="/guides/lead-generation-roofing-companies/">lead generation for roofing companies</a> — a Polymarket trader at a certain activity level needs proper tracking infrastructure rather than manual blockchain monitoring.</p>
+
+                <h2>Service Investment and What Is Included</h2>
+
+                <p>Whale tracking bot deployments are priced as one-time infrastructure builds. You pay once for a system you then own and operate.</p>
+
+                <table class="service-table">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>One-time build fee</strong></td>
+                            <td>$3,000 – $5,000 depending on configuration scope, wallet count, and whether auto-execution is included</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dedicated VPS</strong></td>
+                            <td>Provisioned and configured as part of the build. You receive full root access. The server is yours.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wallet scoring analysis</strong></td>
+                            <td>Full historical performance scoring on candidate addresses, recommended tracking list with rationale</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Monitoring bot deployment</strong></td>
+                            <td>Event-driven on-chain monitoring stack covering all configured wallet addresses 24/7</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Behavioral profile system</strong></td>
+                            <td>Continuously updated profiles per tracked wallet: win rates, sizing patterns, entry timing, convergence detection</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Telegram alert system</strong></td>
+                            <td>Structured real-time alerts for all qualifying whale detections, with configurable format and priority indicators</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Auto-execution engine (optional)</strong></td>
+                            <td>Full risk control configuration and Polymarket API integration for automated position mirroring</td>
+                        </tr>
+                        <tr>
+                            <td><strong>30-day support window</strong></td>
+                            <td>Post-launch support for configuration adjustments, wallet list updates, and technical issues</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ongoing monitoring (optional)</strong></td>
+                            <td>$500/month — Blue Digix monitors bot performance, refreshes wallet scoring, updates tracking lists, and handles technical maintenance</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Client provides their own Polymarket account and trading capital. Blue Digix does not require access to your funds, does not participate in trading outcomes, and does not retain access to your infrastructure after delivery unless you elect the optional monitoring arrangement.</p>
+
+                <h2>Common Questions</h2>
+
+                <h3>Can I bring my own wallet list?</h3>
+
+                <p>Yes. Most clients come with a list of addresses they have already identified as high-performing. We run the full scoring analysis on your list, confirm which addresses have statistically reliable edges, flag any that show signs of performance regression or dormancy, and recommend additions from our own analysis. The final tracking list is reviewed and agreed upon before deployment.</p>
+
+                <h3>What if I only want alerts, not auto-execution?</h3>
+
+                <p>Alert-only deployments are fully supported and are actually the recommended starting configuration for most clients. Running in monitoring mode first lets you validate the alert quality and build confidence in the tracking data before enabling auto-execution. Alert-only builds are at the lower end of the pricing range. Auto-execution adds configuration complexity and therefore additional build cost.</p>
+
+                <h3>How many wallets can the bot track simultaneously?</h3>
+
+                <p>There is no hard ceiling at typical deployment scales. Most clients track between fifteen and sixty wallets. Very large tracking lists — one hundred or more addresses — are technically feasible but require more careful signal management to avoid alert fatigue. If you have a large initial list, the wallet scoring process will typically narrow it to a more focused set of high-confidence targets anyway.</p>
+
+                <h3>What happens when a tracked wallet goes dormant or loses its edge?</h3>
+
+                <p>Without the optional monitoring arrangement, the tracking list remains as configured until you request a change. With the $500/month monitoring arrangement, Blue Digix continuously reviews wallet performance metrics and proactively recommends list updates — replacing underperforming wallets, adding newly-identified high performers, and adjusting allocation weighting as performance patterns evolve.</p>
+
+                <h3>Is this available for prediction markets beyond Polymarket?</h3>
+
+                <p>The current deployment stack is built specifically for Polymarket's on-chain architecture on Polygon. Adaptation to other prediction market platforms that operate on EVM-compatible chains is theoretically feasible but would require a custom assessment. Discuss your specific requirements on the initial call.</p>
+
+                <h3>How does the system handle Polymarket API changes or smart contract upgrades?</h3>
+
+                <p>Smart contract upgrades and API changes are a reality of any evolving platform. The optional monitoring arrangement covers maintenance updates triggered by platform changes. Without ongoing monitoring, clients are responsible for monitoring platform announcements and requesting updates as needed. Blue Digix charges a per-update maintenance fee for out-of-scope changes for clients without the monitoring arrangement.</p>
+
+                <h3>Can I adjust configuration after deployment?</h3>
+
+                <p>Yes. You have full access to the VPS and bot configuration files. Clients with technical comfort can make configuration changes directly. Clients who prefer to have Blue Digix make changes can request them — within the 30-day support window this is included, after which a per-request maintenance fee applies for clients without the monitoring arrangement.</p>
+
+                <div class="callout">
+                    <p><strong>On investment proportionality:</strong> The build fee range of $3,000 to $5,000 reflects the scope of what is actually being delivered: a production-quality, redundant, behaviorally-intelligent tracking system running 24/7 on dedicated infrastructure. The same investment calculus applies here as it does when a service business evaluates whether to build proper client acquisition infrastructure — see our overview of <a href="/guides/best-email-marketing-software-roofing-contractors/">email marketing systems for contractors</a> for a parallel discussion of the build-versus-improvise decision. The question is not whether the upfront cost is zero; the question is whether the system delivers proportionate ongoing value at your activity level.</p>
+                </div>
+
+                <h2>The Intelligence Was Always There. The Infrastructure Was Missing.</h2>
+
+                <p>Osman's story is not unusual. Sophisticated Polymarket participants frequently arrive at the whale tracking insight independently — the on-chain transparency of prediction markets makes it discoverable for anyone willing to analyze leaderboard data carefully. The analytical layer is not the hard part. The hard part is converting that analytical edge into a monitoring and execution system that actually operates at the speed and scale the strategy demands.</p>
+
+                <p>The blockchain explorer approach is not a bad starting point. It is how almost everyone who takes this seriously begins. But it is a starting point, not a sustainable operating model. It caps your monitoring coverage at whatever your attention can manually sustain. It caps your execution speed at whatever your reaction time allows. It creates systematic blind spots during any period when you are unavailable.</p>
+
+                <p>A purpose-built Polymarket whale tracking bot removes those caps. The monitoring coverage is defined by the wallet list, not your attention. The execution speed is defined by network latency, not human reaction time. The blind spots are eliminated — the system monitors continuously regardless of your availability.</p>
+
+                <p>The intelligence you have built — the analysis of which wallets to follow, the understanding of their behavioral patterns, the conviction that this strategy has merit — that part is yours. Blue Digix provides the infrastructure layer that converts that intelligence from a manual, attention-intensive workflow into an automated, always-on system.</p>
+
+                <p>If you have a wallet list, a view on which addresses are worth following, and a recognition that your current monitoring approach is the bottleneck — that is the conversation worth having.</p>
+
+                <div class="cta-box cta-box-primary">
+                    <h3>Build Your Whale Tracking Infrastructure</h3>
+                    <p>Book a 30-minute strategy call. We will review your wallet list, discuss your alert and execution preferences, and give you a fixed-price quote with a clear delivery timeline. No commitment required on the call.</p>
+                    <a href="https://calendly.com/bluedigix/client-acquisition-fit-call" class="btn btn-white">Book Your Strategy Call →</a>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Want to Go Deeper on the Copy Trading Side?</h3>
+                    <p>Whale tracking and whale copy trading are related but distinct systems. Our copy trading guide covers the execution and mirroring architecture in detail.</p>
+                    <a href="/guides/polymarket-whale-copy-trading/" class="btn btn-primary">Read: Polymarket Whale Copy Trading →</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="related-guides">
+            <div class="article-container">
+                <h3>Related Guides</h3>
+                <ul>
+                    <li><a href="/guides/polymarket-whale-copy-trading/">Polymarket Whale Copy Trading — Follow the Smart Money Automatically</a></li>
+                    <li><a href="/guides/polymarket-copy-trade-whale-wallets/">Polymarket Copy Trade Whale Wallets — Infrastructure and Setup</a></li>
+                    <li><a href="/guides/polymarket-signal-copy-trading/">Polymarket Signal Copy Trading — System Architecture</a></li>
+                </ul>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="container">© 2026 Blue Digix, LLC. All rights reserved.</div>
+    </footer>
+</body>
+</html>
