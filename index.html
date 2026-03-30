@@ -938,6 +938,84 @@
         </div>
     </section>
 
+    <!-- FEATURED INSIGHTS -->
+    <section class="featured-insights" id="insights">
+        <div class="container">
+            <div class="section-label reveal">Resource Library</div>
+            <h2 class="reveal">Guides our clients use to grow</h2>
+            <p class="section-sub reveal">Frameworks, diagnostics, and step-by-step playbooks for service businesses.</p>
+            <div class="insights-grid">
+                <a href="/guides/sales-funnel-not-converting/" class="insight-card reveal">
+                    <h3>Sales Funnel Not Converting? 7 Fixes</h3>
+                    <p>Diagnose and fix the most common funnel problems — from traffic mismatch to missing follow-up sequences.</p>
+                    <span class="insight-link">Read Guide →</span>
+                </a>
+                <a href="/guides/how-to-pre-qualify-leads-before-sales-call/" class="insight-card reveal">
+                    <h3>How to Pre-Qualify Leads Before the Call</h3>
+                    <p>Stop wasting calls on tire kickers. Qualify and warm prospects before they ever reach your calendar.</p>
+                    <span class="insight-link">Read Guide →</span>
+                </a>
+                <a href="/guides/7-minute-sales-video-framework/" class="insight-card reveal">
+                    <h3>The 7-Minute Sales Video Framework</h3>
+                    <p>Build a short video that pre-sells your offer and books discovery calls — no production crew needed.</p>
+                    <span class="insight-link">Read Guide →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .featured-insights {
+            padding: 80px 0;
+            background: var(--bg);
+        }
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .insight-card {
+            display: block;
+            background: white;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-decoration: none;
+            color: var(--text);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        .insight-card h3 {
+            font-family: var(--headline);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        .insight-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+        .insight-link {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
     <!-- PROCESS -->
     <section class="process">
         <div class="container">
