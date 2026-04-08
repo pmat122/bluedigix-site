@@ -1261,6 +1261,15 @@
                 revenue: document.getElementById('leadRevenue').value,
                 tool_source: 'bluedigix-homepage'
             };
+            // Spam filter - silently drop garbage submissions
+            const nameClean = data.name.trim();
+            const hasSpace = /\s/.test(nameClean);
+            const onlyLetters = /^[a-zA-Z\s\-'.]+$/.test(nameClean);
+            if (nameClean.length > 50 || nameClean.length < 3 || !hasSpace || !onlyLetters) {
+                form.style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'block';
+                return;
+            }
             
             try {
                 await fetch(GHL_WEBHOOK, {
