@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Launch Auditor — Website Launch Readiness | Blue Digix Labs</title>
+  <meta name="description" content="Site Launch Auditor checks public websites for crawlability, indexing signals, redirects, canonicals, metadata, structured-data syntax, trust-page discovery, and common launch issues.">
+  <link rel="canonical" href="https://bluedigix.com/site-launch-auditor/">
+  <meta property="og:title" content="Site Launch Auditor — Website Launch Readiness">
+  <meta property="og:description" content="Audit a public website before launch or deployment with Site Launch Auditor by Blue Digix Labs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bluedigix.com/site-launch-auditor/">
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root{--bg:#FAF8F5;--card:#fff;--navy:#0A1628;--accent:#2563EB;--accent-hover:#1D4ED8;--text:#1A1A1A;--secondary:#5C5C5C;--muted:#8A8A8A;--border:rgba(0,0,0,.08);--headline:'Outfit',sans-serif;--body:'DM Sans',-apple-system,sans-serif}
+      *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.7}.container{max-width:900px;margin:0 auto;padding:0 24px}
+      nav{position:sticky;top:0;z-index:10;background:rgba(250,248,245,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}nav .inner{max-width:1180px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+      .logo{font-family:var(--headline);font-weight:700;font-size:20px;color:var(--navy);text-decoration:none}.logo span{color:var(--accent)}.navlinks{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.navlinks a{color:var(--secondary);text-decoration:none;font-size:14px;font-weight:600}.navlinks a:hover{color:var(--text)}
+      main{padding:72px 0 88px}.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+      h1,h2,h3{font-family:var(--headline);color:var(--navy);line-height:1.2}h1{font-size:clamp(38px,6vw,60px);letter-spacing:-.035em;margin:0 0 18px}h2{font-size:28px;margin:48px 0 14px}h3{font-size:19px;margin:0 0 8px}
+      .lead{font-size:20px;color:var(--secondary);max-width:760px;margin:0 0 30px}.panel{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:30px;margin:24px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:28px 0}.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}.card p{margin:0;color:var(--secondary)}
+      p,li{font-size:16px;color:var(--secondary)}ul{padding-left:22px}.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;padding:13px 20px;border-radius:8px}.btn:hover{background:var(--accent-hover)}
+      .note{font-size:14px;color:var(--muted)}.meta{font-size:14px;color:var(--muted);margin-top:-6px}.kicker{display:inline-block;background:#EEF2FF;color:var(--accent);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700}
+      footer{border-top:1px solid var(--border);padding:34px 0 44px;color:var(--muted);font-size:13px}footer a{color:var(--secondary);text-decoration:none;margin-right:16px}
+      @media(max-width:700px){.grid{grid-template-columns:1fr}.navlinks{gap:12px}.navlinks a{font-size:13px}main{padding-top:48px}}
+    </style>
+</head>
+<body>
+<nav><div class="inner"><a class="logo" href="/">Blue<span>Digix</span></a><div class="navlinks"><a href="/site-launch-auditor/support/">Support</a><a href="/site-launch-auditor/privacy/">Privacy</a><a href="/site-launch-auditor/terms/">Terms</a></div></div></nav>
+<main><div class="container">
+  <div class="eyebrow">Blue Digix Labs</div>
+  <h1>Check a website before you launch it.</h1>
+  <p class="lead">Site Launch Auditor is a website QA tool from Blue Digix Labs that reviews public websites for common launch-readiness problems and returns a prioritized verdict.</p>
+  <span class="kicker">Built for ChatGPT</span>
+
+  <div class="grid">
+    <div class="card"><h3>Crawl & indexing signals</h3><p>Checks robots.txt, sitemap availability, meta robots, HTTPS, and public reachability.</p></div>
+    <div class="card"><h3>Canonicals & redirects</h3><p>Reviews canonical configuration and treats intentional external redirect endpoints separately from content pages.</p></div>
+    <div class="card"><h3>Page metadata</h3><p>Checks titles, descriptions, H1s, viewport metadata, Open Graph URL, and structured-data syntax.</p></div>
+    <div class="card"><h3>Launch-readiness triage</h3><p>Separates blockers, warnings, opportunities, and ignored/external findings so low-priority polish is not confused with launch failures.</p></div>
+  </div>
+
+  <h2>When to use it</h2>
+  <ul>
+    <li>Before publishing a new website or moving a staging site into production.</li>
+    <li>After a deployment when you want a quick technical QA pass.</li>
+    <li>Before sending paid traffic to a new site.</li>
+    <li>When checking whether basic crawl and indexing signals are configured as expected.</li>
+    <li>When reviewing redirects, canonicals, metadata, or structured-data syntax after a site change.</li>
+  </ul>
+
+  <h2>What the audit returns</h2>
+  <div class="panel">
+    <p><strong>BLOCKER</strong> — a condition that can materially prevent a normal launch or intended crawling/indexing.</p>
+    <p><strong>WARNING</strong> — a meaningful issue that deserves review but does not necessarily prevent launch.</p>
+    <p><strong>OPPORTUNITY</strong> — lower-priority optimization or polish.</p>
+    <p><strong>IGNORED / EXTERNAL</strong> — intentionally excluded items such as valid redirects to third-party destinations.</p>
+  </div>
+
+  <h2>Important limits</h2>
+  <p>Site Launch Auditor uses automated checks against publicly accessible resources. It does not render every JavaScript-driven interaction, submit forms, perform a complete accessibility review, certify legal or security compliance, guarantee search-engine indexing or rankings, or guarantee conversion performance. A capped crawl can also miss pages that exist elsewhere on a larger site.</p>
+
+  <h2>Publisher</h2>
+  <p>Site Launch Auditor is developed by Blue Digix, LLC and published under the <strong>Blue Digix Labs</strong> developer name.</p>
+  <p class="note">Product support, privacy information, and terms are available from the links below.</p>
+</div></main>
+<footer><div class="container">© 2026 Blue Digix, LLC. All rights reserved.<div style="margin-top:10px"><a href="/site-launch-auditor/support/">Support</a><a href="/site-launch-auditor/privacy/">Privacy</a><a href="/site-launch-auditor/terms/">Terms</a><a href="/">BlueDigix.com</a></div></div></footer>
+</body></html>
