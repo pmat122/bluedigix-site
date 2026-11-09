@@ -362,6 +362,7 @@
         /* ============ HOMEPAGE VSL ============ */
         .vsl-section {
             padding: 64px 0 72px;
+            overflow: hidden;
             background: var(--bg);
             border-bottom: 1px solid var(--border);
         }
@@ -385,6 +386,38 @@
             font-weight: 500;
             color: var(--text-muted);
             letter-spacing: 0.02em;
+        }
+        /* Soft back-glow from VSL v3; keep existing player and video behavior. */
+        .vsl-player-outer {
+            position: relative;
+            margin: -24px;
+            padding: 24px;
+            isolation: isolate;
+        }
+        .vsl-glow {
+            position: absolute;
+            inset: -20px;
+            border-radius: 32px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            pointer-events: none;
+            z-index: 0;
+            background: radial-gradient(
+                500px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+                rgba(37, 99, 235, 0.32) 0%,
+                rgba(99, 102, 241, 0.15) 35%,
+                rgba(168, 85, 247, 0.06) 55%,
+                transparent 75%
+            );
+            filter: blur(40px);
+        }
+        .vsl-player-outer.glow-visible .vsl-glow { opacity: 1; }
+        .vsl-player-outer .vsl-player-wrap {
+            z-index: 1;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vsl-glow { transition: none; }
         }
         .vsl-player-wrap {
             position: relative;
@@ -912,6 +945,8 @@
                 <h2 id="homepage-vsl-heading">See how we turn the right offer into more qualified sales meetings.</h2>
                 <p class="vsl-duration">Just 2 minutes, 35 seconds</p>
             </div>
+            <div class="vsl-player-outer" id="vslOuter">
+                <div class="vsl-glow" aria-hidden="true"></div>
             <div class="vsl-player-wrap">
                 <video id="homepage-vsl"
                     poster="/assets/video/vsl-poster.png"
@@ -924,6 +959,7 @@
                 <button type="button" class="vsl-play-button" id="homepage-vsl-play" aria-label="Play the Blue Digix 2 minute 35 second video">
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11.14-6.86a1 1 0 0 0 0-1.72L9.5 4.28a1 1 0 0 0-1.5.86z" fill="currentColor"/></svg>
                 </button>
+                </div>
             </div>
             <noscript><p><a href="/assets/video/bluedigix-vsl.mp4">Watch the Blue Digix video</a></p></noscript>
             <div class="vsl-cta">
@@ -946,6 +982,35 @@
                 if (playback && typeof playback.catch === 'function') {
                     playback.catch(function () { playButton.hidden = false; });
                 }
+            });
+        }());
+    </script>
+    <script>
+        (function () {
+            const outer = document.getElementById('vslOuter');
+            if (!outer) return;
+            let revealed = false;
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        revealed = entry.isIntersecting && entry.intersectionRatio > 0.3;
+                        outer.classList.toggle('glow-visible', revealed);
+                    });
+                }, { threshold: [0, 0.3, 0.6, 1] });
+                observer.observe(outer);
+            } else {
+                revealed = true;
+                outer.classList.add('glow-visible');
+            }
+            outer.addEventListener('mousemove', function (e) {
+                if (!revealed) return;
+                const rect = outer.getBoundingClientRect();
+                outer.style.setProperty('--glow-x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+                outer.style.setProperty('--glow-y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+            });
+            outer.addEventListener('mouseleave', function () {
+                outer.style.setProperty('--glow-x', '50%');
+                outer.style.setProperty('--glow-y', '50%');
             });
         }());
     </script>
