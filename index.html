@@ -358,6 +358,74 @@
             100% { transform: translateX(-50%); }
         }
 
+
+        /* ============ HOMEPAGE VSL ============ */
+        .vsl-section {
+            padding: 64px 0 72px;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+        }
+        .vsl-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .vsl-header h2 {
+            font-family: var(--headline);
+            font-size: clamp(26px, 3.5vw, 40px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            color: var(--navy);
+            margin: 0 auto 12px;
+            max-width: 640px;
+        }
+        .vsl-duration {
+            font-family: var(--body);
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+        }
+        .vsl-player-wrap {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+            line-height: 0;
+        }
+        .vsl-player-wrap video {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
+        }
+        .vsl-play-button {
+            position: absolute;
+            top: 79%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 21px;
+            border: 0;
+            border-radius: 999px;
+            background: #2563eb;
+            color: #fff;
+            font: 600 16px var(--body);
+            line-height: 1.2;
+            white-space: nowrap;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.20);
+            cursor: pointer;
+            z-index: 2;
+        }
+        .vsl-play-button[hidden] { display: none; }
+        .vsl-play-button:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+        .vsl-play-button:hover { background: #1d4ed8; }
+        .vsl-cta { text-align: center; margin-top: 32px; }
+
         /* ============ SECTIONS ============ */
         section { padding: clamp(80px, 10vw, 140px) 0; }
         .section-label {
@@ -824,6 +892,53 @@
             </div>
         </div>
     </div>
+
+
+    <!-- HOMEPAGE VSL -->
+    <section class="vsl-section" aria-labelledby="homepage-vsl-heading">
+        <div class="container" style="max-width: 800px;">
+            <div class="vsl-header">
+                <h2 id="homepage-vsl-heading">See how we turn the right offer into more qualified sales meetings.</h2>
+                <p class="vsl-duration">Just 2 minutes, 35 seconds</p>
+            </div>
+            <div class="vsl-player-wrap">
+                <video id="homepage-vsl"
+                    poster="/assets/video/vsl-poster.png"
+                    preload="none"
+                    playsinline
+                    width="1920" height="1080">
+                    <source src="/assets/video/bluedigix-vsl.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <button type="button" class="vsl-play-button" id="homepage-vsl-play" aria-label="Play the Blue Digix 2 minute 35 second video">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5L7 4.5z"/></svg>
+                    Play video
+                </button>
+            </div>
+            <noscript><p><a href="/assets/video/bluedigix-vsl.mp4">Watch the Blue Digix video</a></p></noscript>
+            <div class="vsl-cta">
+                <a href="#book" class="btn-primary">
+                    Book a Strategy Call
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+    <script>
+        (function () {
+            const video = document.getElementById('homepage-vsl');
+            const playButton = document.getElementById('homepage-vsl-play');
+            if (!video || !playButton) return;
+            playButton.addEventListener('click', function () {
+                video.controls = true;
+                playButton.hidden = true;
+                const playback = video.play();
+                if (playback && typeof playback.catch === 'function') {
+                    playback.catch(function () { playButton.hidden = false; });
+                }
+            });
+        }());
+    </script>
 
     <!-- BOOK A STRATEGY CALL -->
     <section id="book" style="padding: 80px 0; background: var(--bg-warm); border-bottom: 1px solid var(--border);">
