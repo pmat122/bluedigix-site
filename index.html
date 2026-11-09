@@ -402,28 +402,39 @@
         }
         .vsl-play-button {
             position: absolute;
-            top: 79%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 12px 21px;
+            width: 80px;
+            height: 80px;
+            padding: 0;
             border: 0;
-            border-radius: 999px;
-            background: #2563eb;
+            border-radius: 50%;
+            background: var(--accent);
             color: #fff;
-            font: 600 16px var(--body);
-            line-height: 1.2;
-            white-space: nowrap;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.20);
+            box-shadow: 0 4px 24px rgba(37, 99, 235, 0.35);
             cursor: pointer;
             z-index: 2;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
         .vsl-play-button[hidden] { display: none; }
-        .vsl-play-button:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
-        .vsl-play-button:hover { background: #1d4ed8; }
+        .vsl-play-button:focus-visible { outline: 3px solid var(--navy); outline-offset: 4px; }
+        .vsl-play-button:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            box-shadow: 0 6px 32px rgba(37, 99, 235, 0.45);
+        }
+        .vsl-play-button svg {
+            display: block;
+            width: 32px;
+            height: 32px;
+            margin-left: 4px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .vsl-play-button { transition: none; }
+        }
         .vsl-cta { text-align: center; margin-top: 32px; }
 
         /* ============ SECTIONS ============ */
@@ -911,8 +922,7 @@
                     Your browser does not support the video tag.
                 </video>
                 <button type="button" class="vsl-play-button" id="homepage-vsl-play" aria-label="Play the Blue Digix 2 minute 35 second video">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l12-7.5L7 4.5z"/></svg>
-                    Play video
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11.14-6.86a1 1 0 0 0 0-1.72L9.5 4.28a1 1 0 0 0-1.5.86z" fill="currentColor"/></svg>
                 </button>
             </div>
             <noscript><p><a href="/assets/video/bluedigix-vsl.mp4">Watch the Blue Digix video</a></p></noscript>
