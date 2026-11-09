@@ -444,20 +444,28 @@
             width: 80px;
             height: 80px;
             padding: 0;
-            border: 0;
+            border: 2px solid rgba(255, 255, 255, 0.6);
             border-radius: 50%;
-            background: var(--accent);
+            background: rgba(37, 99, 235, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             color: #fff;
-            box-shadow: 0 4px 24px rgba(37, 99, 235, 0.35);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
             cursor: pointer;
             z-index: 2;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
         }
-        .vsl-play-button[hidden] { display: none; }
-        .vsl-play-button:focus-visible { outline: 3px solid var(--navy); outline-offset: 4px; }
+        .vsl-play-button[hidden] {
+            display: none;
+        }
+        .vsl-play-button:focus-visible {
+            outline: 3px solid var(--navy);
+            outline-offset: 4px;
+        }
         .vsl-play-button:hover {
             transform: translate(-50%, -50%) scale(1.08);
-            box-shadow: 0 6px 32px rgba(37, 99, 235, 0.45);
+            background: rgba(37, 99, 235, 0.4);
+            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.16);
         }
         .vsl-play-button svg {
             display: block;
@@ -466,7 +474,9 @@
             margin-left: 4px;
         }
         @media (prefers-reduced-motion: reduce) {
-            .vsl-play-button { transition: none; }
+            .vsl-play-button {
+                transition: none;
+            }
         }
         .vsl-cta { text-align: center; margin-top: 32px; }
 
