@@ -444,16 +444,14 @@
             width: 80px;
             height: 80px;
             padding: 0;
-            border: 2px solid rgba(255, 255, 255, 0.6);
+            border: 2px solid rgba(37, 99, 235, 0.3);
             border-radius: 50%;
-            background: rgba(37, 99, 235, 0.25);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            color: #fff;
+            background: rgba(37, 99, 235, 0.12);
+            color: rgba(37, 99, 235, 0.85);
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
             cursor: pointer;
             z-index: 2;
-            transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
         .vsl-play-button[hidden] {
             display: none;
@@ -464,8 +462,7 @@
         }
         .vsl-play-button:hover {
             transform: translate(-50%, -50%) scale(1.08);
-            background: rgba(37, 99, 235, 0.4);
-            box-shadow: 0 6px 32px rgba(0, 0, 0, 0.16);
+            background: rgba(37, 99, 235, 0.2);
         }
         .vsl-play-button svg {
             display: block;
